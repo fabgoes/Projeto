@@ -1,0 +1,73 @@
+unit uCtrlFormadePagamentos;
+
+interface
+uses
+   uController,  Data.DB, uDaoFormadePagamentos;
+
+type
+   CtrlFormadePagamentos = class (controller)
+      private
+
+      protected
+        public
+        constructor CrieObj;                             override;
+        destructor Destrua_se;                           override;
+        function  Excluir(pObj : TObject):string;        override;
+        function  Salvar(pObj : TObject):string;         override;
+        function Carregar (pObjt : TObject):string;      override;
+        Procedure Pesquisar ( pChave : string );          override;
+        function getDS : TObject;                        override;
+        Procedure setDM(pObj : TObject);                 override;
+   end;
+
+implementation
+
+{ CtrlFormadePagamentos }
+
+function CtrlFormadePagamentos.Carregar(pObjt: TObject): string;
+begin
+
+end;
+
+constructor CtrlFormadePagamentos.CrieObj;
+begin
+   //aDaoFormadePagamentos:= DaoFormadePagamentos.CrieObj;
+
+end;
+
+destructor CtrlFormadePagamentos.Destrua_se;
+begin
+    //aDaoFormadePagamentos.Destrua_se;
+end;
+
+function  CtrlFormadePagamentos.Excluir(pObj: TObject): string;
+begin
+  inherited;
+
+end;
+
+
+
+function  CtrlFormadePagamentos.Salvar(pObj: TObject): string;
+begin
+  inherited;
+
+end;
+procedure CtrlFormadePagamentos.setDM(pObj: TObject);
+begin
+  inherited;
+  //aDaoFormadePagamentos.setDM(pOBJ);
+end;
+
+function CtrlFormadePagamentos.getDS :  TObject;
+begin
+   // result :=  aDaoFormadePagamentos.getDS;
+end;
+
+procedure CtrlFormadePagamentos.Pesquisar(pChave: string);
+begin
+  inherited;
+
+end;
+
+end.

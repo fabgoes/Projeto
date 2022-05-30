@@ -1,0 +1,15 @@
+﻿[Conexao]
+Visible=True
+
+[DSPaises]
+LayerNames="select * from paises;"
+
+[Module Settings]
+ModelLayerNames="select * from paises;";"select * from estados;";"select * from cidades;"
+
+[DSEstados]
+LayerNames="select * from estados;"
+
+[DSCidades]
+LayerNames="select * from cidades;"
+

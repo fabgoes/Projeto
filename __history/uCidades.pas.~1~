@@ -1,0 +1,106 @@
+unit uCidades;
+
+interface
+
+uses
+  Classes, SysUtils, uPai, uEstados;
+
+type
+
+{ Cidades }
+
+ Cidades = class (Pai)
+  private
+  protected
+    cidade : string [50];
+    ddd : string[3];
+    sigla : string[3];
+    oEstado : Estados;
+  public
+    constructor crieObj;
+    destructor destrua_se;
+    procedure setCidade (pCidade : string);
+    procedure setDDD (pDDD : string);
+    procedure setSigla (pSigla : string);
+    procedure setoEstado (pPOEstado : Estados);
+    function getCidade : string;
+    function getDDD : string;
+    function getSigla : string;
+    function getoEstado : Estados;
+    function clone : Cidades;
+
+
+end;
+
+implementation
+
+{ Cidades }
+
+constructor Cidades.crieObj;
+begin
+  inherited;
+  cidade := '';
+  ddd := '';
+  sigla := '';
+  oEstado := Estados.crieObj;
+end;
+
+destructor Cidades.destrua_se;
+begin
+  oEstado.destrua_se;
+
+end;
+
+procedure Cidades.setCidade(pCidade: string);
+begin
+  cidade := pCidade;
+end;
+
+procedure Cidades.setDDD(pDDD: string);
+begin
+  ddd := pDDD;
+end;
+
+procedure Cidades.setSigla(pSigla: string);
+begin
+  sigla := pSigla;
+end;
+
+procedure Cidades.setoEstado(pPOEstado: Estados);
+begin
+  oEstado := pPOEstado;
+end;
+
+function Cidades.getCidade: string;
+begin
+  result := cidade;
+end;
+
+function Cidades.getDDD: string;
+begin
+  result := ddd;
+end;
+
+function Cidades.getSigla: string;
+begin
+  result := sigla;
+end;
+
+function Cidades.getoEstado: Estados;
+begin
+  result := oEstado.clone;
+end;
+
+function Cidades.clone: Cidades;
+begin
+  result := Cidades.crieObj;
+  result.setCodigo(codigo);
+  result.setCidade(cidade);
+  result.setDDD(ddd);
+  result.setSigla(sigla);
+  result.setoEstado(oEstado.clone);
+  result.setDataCad(dataCad);
+end;
+
+end.
+

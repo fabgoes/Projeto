@@ -1,0 +1,83 @@
+unit uCtrlCidades;
+
+interface
+uses uController,  Data.DB, uDaoCidades, uDM, Datasnap.DBClient;
+
+type
+   CtrlCidades = class (controller)
+      private
+
+      protected
+         aDaoCidade : DaoCidades;
+      public
+        constructor CrieObj;
+        destructor Destrua_se;
+        function  Excluir(pObj : TObject):string;        override;
+        function  Salvar(pObj : TObject):string;         override;
+        function Carregar (pObjt : TObject):string;      override;
+        procedure Pesquisar ( pChave : string );         override;
+        function getDS : TObject;                        override;
+        Procedure setDM(pDM : TObject);                  override;
+        function AcheiReg(): boolean;
+   end;
+
+implementation
+
+{ CtrlCidades }
+
+function CtrlCidades.AcheiReg: boolean;
+begin
+    result := aDaoCidade.AcheiReg;
+end;
+
+function CtrlCidades.Carregar(pObjt: TObject): string;
+begin
+
+end;
+
+constructor CtrlCidades.CrieObj;
+begin
+   aDaoCidade:= DaoCidades.CrieObj;
+
+end;
+
+destructor CtrlCidades.Destrua_se;
+begin
+
+
+end;
+
+function CtrlCidades.Excluir(pObj: TObject): string;
+begin
+
+end;
+
+function CtrlCidades.getDS: TObject;
+begin
+    result:= aDaoCidade.getDS;
+
+end;
+
+procedure CtrlCidades.Pesquisar(pChave: string);
+begin
+  inherited;
+  aDaoCidade.Pesquisar(pChave);
+
+end;
+
+function CtrlCidades.Salvar(pObj: TObject): string;
+begin
+    result := aDaoCidade.Salvar(pObj);
+
+end;
+
+
+
+procedure CtrlCidades.setDM(pDM: TObject);
+begin
+  inherited;
+  aDaoCidade.setDM(pDM);
+
+end;
+
+end.

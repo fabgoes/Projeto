@@ -1,0 +1,101 @@
+unit uClientes;
+
+interface
+
+uses
+  Classes, SysUtils, uPai, uPessoas;
+
+type
+   Clientes = class (Pessoas)
+  protected
+    codCliente : integer;
+    RG         : string[10];
+    CPF        : string[20];
+
+
+
+
+  public
+   constructor CrieObj;
+   destructor Destrua_se;
+   procedure setCodCliente(pCodCliente:integer);
+   procedure setRG(pRG:string);
+   procedure setCPF(pCPF:string);
+   function getCodCliente:integer;
+   function getRG:string;
+   function getCPF:string;
+   function Clone: Clientes;
+
+
+end;
+
+
+implementation
+
+{ Clientes }
+
+
+
+constructor Clientes.CrieObj;
+begin
+  codCliente := 0;
+  RG:= '';
+  CPF:= '';
+end;
+
+destructor Clientes.Destrua_se;
+begin
+
+end;
+
+function Clientes.getCodCliente: integer;
+begin
+   result := CodCliente;
+end;
+
+function Clientes.getCPF: string;
+begin
+   result := CPF;
+end;
+
+function Clientes.getRG: string;
+begin
+   result := RG;
+end;
+
+procedure Clientes.setCodCliente(pCodCliente: integer);
+begin
+    CodCliente :=pCodCliente;
+end;
+procedure Clientes.setCPF(pCPF: string);
+begin
+
+end;
+
+procedure Clientes.setRG(pRG: string);
+begin
+
+end;
+
+function Clientes.Clone: Clientes;
+begin
+   result:= Clientes.CrieObj;
+   result.setCodigo(Codigo);
+   result.setDataCad(DataCad);
+   result.setDataUltAlt(DataUltAlt);
+   result.setNome(Nome);
+   result.setSexo(Sexo);
+   result.setRG(RG);
+   result.setCPF(CPF);
+   result.setTelefone(Telefone);
+   result.setEmail(Email);
+   result.setCEP(CEP);
+   result.setBairro(Bairro);
+   result.setLogradouro(Logradouro);
+   result.setNumero(Numero);
+   result.setComplemento(Complemento);
+   result.setDataNasc(DataNasc);
+
+end;
+
+end.

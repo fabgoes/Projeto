@@ -1,0 +1,72 @@
+unit uCtrlCondicaodePagamentos;
+
+interface
+uses
+   uController,  Data.DB, uDaoCondicaodePagamentos;
+
+type
+   CtrlCondicaodePagamentos = class (controller)
+      private
+
+      protected
+         aDaoCondicaodePagamento : DaoCondicaodePagamentos;
+      public
+        constructor CrieObj;                             override;
+        destructor Destrua_se;                           override;
+        function  Excluir(pObj : TObject):string;        override;
+        function  Salvar(pObj : TObject):string;         override;
+        function Carregar (pObjt : TObject):string;      override;
+        procedure Pesquisar ( pChave : string );         override;
+        function getDS : TObject;                        override;
+        Procedure setDM(pObj : TObject);                 override;
+   end;
+
+implementation
+
+{ CtrlCondicaodePagamentos }
+
+function CtrlCondicaodePagamentos.Carregar(pObjt: TObject): string;
+begin
+
+end;
+
+constructor CtrlCondicaodePagamentos.CrieObj;
+begin
+  inherited;
+
+end;
+
+destructor CtrlCondicaodePagamentos.Destrua_se;
+begin
+
+  inherited;
+end;
+
+function CtrlCondicaodePagamentos.Excluir(pObj: TObject): string;
+begin
+
+end;
+
+function CtrlCondicaodePagamentos.getDS: TObject;
+begin
+
+end;
+
+procedure CtrlCondicaodePagamentos.Pesquisar(pChave: string);
+begin
+  inherited;
+
+end;
+
+function CtrlCondicaodePagamentos.Salvar(pObj: TObject): string;
+begin
+
+end;
+
+procedure CtrlCondicaodePagamentos.setDM(pObj: TObject);
+begin
+  inherited;
+
+end;
+
+end.

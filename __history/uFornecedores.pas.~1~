@@ -1,0 +1,121 @@
+unit uFornecedores;
+
+interface
+
+uses
+  Classes, SysUtils, uPai, uPessoas;
+
+type
+   Fornecedores = class (Pessoas)
+  protected
+    CNPJ       : string[20];
+    RG         : string[10];
+    CPF        : string[20];
+    Site       : string[100];
+    Observacao : string[200];
+    RazaoSocial: string[50];
+
+
+
+
+  public
+   constructor CrieObj;
+   destructor Destrua_se;
+   procedure setCNPJ(pCNPJ:string);
+   procedure setRG(pRG:string);
+   procedure setCPF(pCPF:string);
+   procedure setSite(pSite:string);
+   procedure setObservacao(pObservacao:string);
+   procedure setRazaoSocial(pRazaoSocial:string);
+   function getCNPJ:string;
+   function getRG:string;
+   function getCPF:string;
+   function getSite:string;
+   function getObservacao:string;
+   function getRazaoSocial:string;
+   function Clone: Fornecedores;
+
+
+end;
+
+
+implementation
+
+{ Fornecedores }
+
+function Fornecedores.Clone: Fornecedores;
+begin
+
+end;
+
+constructor Fornecedores.CrieObj;
+begin
+
+end;
+
+destructor Fornecedores.Destrua_se;
+begin
+
+end;
+
+function Fornecedores.getCNPJ: string;
+begin
+
+end;
+
+function Fornecedores.getCPF: string;
+begin
+
+end;
+
+function Fornecedores.getObservacao: string;
+begin
+
+end;
+
+function Fornecedores.getRazaoSocial: string;
+begin
+
+end;
+
+function Fornecedores.getRG: string;
+begin
+
+end;
+
+function Fornecedores.getSite: string;
+begin
+
+end;
+
+procedure Fornecedores.setCNPJ(pCNPJ: string);
+begin
+
+end;
+
+procedure Fornecedores.setCPF(pCPF: string);
+begin
+
+end;
+
+procedure Fornecedores.setObservacao(pObservacao: string);
+begin
+
+end;
+
+procedure Fornecedores.setRazaoSocial(pRazaoSocial: string);
+begin
+
+end;
+
+procedure Fornecedores.setRG(pRG: string);
+begin
+
+end;
+
+procedure Fornecedores.setSite(pSite: string);
+begin
+
+end;
+
+end.

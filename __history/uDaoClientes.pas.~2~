@@ -1,0 +1,84 @@
+unit uDaoClientes;
+
+interface
+uses
+   Data.DB, uDAO, uDM, uClientes, System.SysUtils, Datasnap.DBClient;
+   type
+   DaoClientes = class (DAO)
+   private
+   protected
+   public
+       constructor  CrieObj;                                               override;
+       function Excluir(pObj : TObject): string;                           override;
+       function Salvar(pObj : TObject): string;                            override;
+       function Carregar (pObjt : TObject):string;                         override;
+       procedure Pesquisar ( pChave : string );                            override;
+       function getDS : TObject;                                           override;
+       function AcheiReg(): boolean;
+
+
+
+   end;
+
+implementation
+
+{ DaoClientes }
+
+function DaoClientes.AcheiReg: boolean;
+begin
+    result := not( aDm.QClientes.Eof);
+end;
+
+function DaoClientes.Carregar(pObjt: TObject): string;
+var
+   mCliente : Clientes;
+begin
+   try
+     try
+      mCliente := Clientes(pObjt);
+      with aDM.QClientes DO
+      begin
+        mCliente:= Clientes(pObjt);
+        mCliente.setCodigo(aDM.QClientes.FieldByName('CODCLIENTE').Value);
+       // mCliente.setCliente( aDM.QClientes.FieldByName('CLIENTE').AsString);
+        mCliente.setRG( aDM.QClientes.FieldByName('RG').AsString);
+        mCliente.setCPF( aDM.QClientes.FieldByName('CPF').AsString);
+        result := '';
+      end;
+   except on e:exception do
+      result:= 'Erro ao carregar: '+ e.Message;
+   end;
+
+ finally
+
+ end;
+end;
+
+constructor DaoClientes.CrieObj;
+begin
+  inherited;
+
+end;
+
+function DaoClientes.Excluir(pObj: TObject): string;
+begin
+
+end;
+
+function DaoClientes.getDS: TObject;
+begin
+
+end;
+
+procedure DaoClientes.Pesquisar(pChave: string);
+begin
+  inherited;
+
+end;
+
+function DaoClientes.Salvar(pObj: TObject): string;
+begin
+
+end;
+
+end.

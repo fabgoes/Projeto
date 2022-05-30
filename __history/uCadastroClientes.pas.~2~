@@ -1,0 +1,48 @@
+unit uCadastroClientes;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uCadastroPai, Vcl.StdCtrls;
+
+type
+  TCadastroClientes = class(TCadastroPai)
+    edt_Cliente: TEdit;
+    edt_RG: TEdit;
+    edt_CPF: TEdit;
+    edt_sexo: TEdit;
+    edt_telefone: TEdit;
+    edt_email: TEdit;
+    edt_CEP: TEdit;
+    lbl_Cliente: TLabel;
+    lbl_RG: TLabel;
+    lbl_CPF: TLabel;
+    lbl_sexo: TLabel;
+    lbl_telefone: TLabel;
+    lbl_email: TLabel;
+    lbl_CEP: TLabel;
+    lbl_bairro: TLabel;
+    lbl_logradouro: TLabel;
+    lbl_numero: TLabel;
+    lbl_complemento: TLabel;
+    lbl_dataNasc: TLabel;
+    edt_complemento: TEdit;
+    edt_DataNasc: TEdit;
+    edt_bairro: TEdit;
+    edt_logradouro: TEdit;
+    edt_numero: TEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  CadastroClientes: TCadastroClientes;
+
+implementation
+
+{$R *.dfm}
+
+end.

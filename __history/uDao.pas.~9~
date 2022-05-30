@@ -1,0 +1,72 @@
+unit uDao;
+
+interface
+uses
+  Classes, SysUtils, Data.DB, uDM;
+type
+
+ DAO = class
+  private
+  protected
+      aDM : TDM;
+  public
+     constructor CrieObj;                             virtual;
+     destructor Destrua_se;                           virtual;
+     function Excluir(pObj : TObject):string;         virtual;
+     function Salvar(pObj : TObject):string;          virtual;
+     function Carregar (pObjt : TObject):string;      virtual;
+     function Pesquisar ( pChave : string ): string;  virtual;
+     function getDS : TDataSource;                    virtual;
+     procedure setDM(pDM: TObject);                   virtual;
+
+
+end;
+
+implementation
+
+{ DAO }
+
+function DAO.Carregar(pObjt: TObject): string;
+begin
+
+end;
+
+constructor DAO.CrieObj;
+begin
+
+end;
+
+destructor DAO.Destrua_se;
+begin
+
+end;
+
+function DAO.Excluir(pObj: TObject): string;
+begin
+
+end;
+
+function DAO.getDS: TDataSource;
+begin
+
+end;
+
+function DAO.Pesquisar(pChave: string): string;
+begin
+
+end;
+
+function DAO.Salvar(pObj: TObject): string;
+begin
+
+
+end;
+
+procedure DAO.setDM(pDM: TObject);
+begin
+    aDM := TDM(pDM);
+
+
+end;
+
+end.

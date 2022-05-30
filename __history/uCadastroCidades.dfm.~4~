@@ -1,0 +1,106 @@
+inherited CadastroCidades: TCadastroCidades
+  Caption = 'Cadastro Cidades'
+  ClientWidth = 760
+  ExplicitWidth = 776
+  PixelsPerInch = 96
+  TextHeight = 13
+  object lbl_Cidade: TLabel [4]
+    Left = 165
+    Top = 24
+    Width = 39
+    Height = 13
+    Caption = 'Cidade*'
+  end
+  object lbl_DDD: TLabel [5]
+    Left = 304
+    Top = 24
+    Width = 21
+    Height = 13
+    Caption = 'DDD'
+  end
+  object lbl_Sigla: TLabel [6]
+    Left = 442
+    Top = 24
+    Width = 28
+    Height = 13
+    Caption = 'Sigla*'
+  end
+  object lbl_CodEstado: TLabel [7]
+    Left = 40
+    Top = 128
+    Width = 75
+    Height = 13
+    Caption = 'Codigo Estado*'
+  end
+  object lbl_Estado: TLabel [8]
+    Left = 165
+    Top = 128
+    Width = 33
+    Height = 13
+    Caption = 'Estado'
+  end
+  inherited edt_CodUsuario: TEdit
+    Top = 472
+    ExplicitTop = 472
+  end
+  inherited btn_Salvar: TButton
+    Left = 496
+    Top = 468
+    ExplicitLeft = 496
+    ExplicitTop = 468
+  end
+  inherited btn_Sair: TButton
+    Left = 605
+    Top = 468
+    ExplicitLeft = 605
+    ExplicitTop = 468
+  end
+  object edt_Cidade: TEdit
+    Left = 165
+    Top = 43
+    Width = 121
+    Height = 21
+    MaxLength = 50
+    TabOrder = 6
+  end
+  object edt_DDD: TEdit
+    Left = 304
+    Top = 43
+    Width = 89
+    Height = 21
+    MaxLength = 3
+    TabOrder = 7
+  end
+  object edt_Sigla: TEdit
+    Left = 442
+    Top = 43
+    Width = 87
+    Height = 21
+    MaxLength = 3
+    TabOrder = 8
+  end
+  object edt_CodEstado: TEdit
+    Left = 40
+    Top = 147
+    Width = 81
+    Height = 21
+    MaxLength = 10
+    TabOrder = 9
+  end
+  object edt_Estado: TEdit
+    Left = 165
+    Top = 147
+    Width = 121
+    Height = 21
+    MaxLength = 50
+    TabOrder = 10
+  end
+  object btn_Pesquisar: TButton
+    Left = 334
+    Top = 145
+    Width = 75
+    Height = 25
+    Caption = 'Pesquisar'
+    TabOrder = 11
+  end
+end

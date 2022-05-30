@@ -1,0 +1,64 @@
+unit uDaoClientes;
+
+interface
+uses
+   Data.DB, uDAO, uDM, uClientes, System.SysUtils, Datasnap.DBClient;
+   type
+   DaoClientes = class (DAO)
+   private
+   protected
+   public
+       constructor  CrieObj;                                               override;
+       function Excluir(pObj : TObject): string;                           override;
+       function Salvar(pObj : TObject): string;                            override;
+       function Carregar (pObjt : TObject):string;                         override;
+       procedure Pesquisar ( pChave : string );                            override;
+       function getDS : TObject;                                           override;
+       function AcheiReg(): boolean;
+
+
+
+   end;
+
+implementation
+
+{ DaoClientes }
+
+function DaoClientes.AcheiReg: boolean;
+begin
+
+end;
+
+function DaoClientes.Carregar(pObjt: TObject): string;
+begin
+
+end;
+
+constructor DaoClientes.CrieObj;
+begin
+  inherited;
+
+end;
+
+function DaoClientes.Excluir(pObj: TObject): string;
+begin
+
+end;
+
+function DaoClientes.getDS: TObject;
+begin
+
+end;
+
+procedure DaoClientes.Pesquisar(pChave: string);
+begin
+  inherited;
+
+end;
+
+function DaoClientes.Salvar(pObj: TObject): string;
+begin
+
+end;
+
+end.

@@ -1,0 +1,51 @@
+program Project1;
+
+uses
+  Vcl.Forms,
+  uGerente in 'uGerente.pas' {Gerente},
+  uConsultaPai in 'uConsultaPai.pas' {ConsultaPai},
+  uConsultaPaises in 'uConsultaPaises.pas' {ConsultaPaises},
+  uConsultaEstados in 'uConsultaEstados.pas' {ConsultaEstados},
+  uConsultaCidades in 'uConsultaCidades.pas' {ConsultaCidades},
+  uController in 'uController.pas',
+  uDao in 'uDao.pas',
+  uCadastroPai in 'uCadastroPai.pas' {CadastroPai},
+  uCadastroPaises in 'uCadastroPaises.pas' {CadastroPaises},
+  uCadastroEstados in 'uCadastroEstados.pas' {CadastroEstados},
+  uCadastroCidades in 'uCadastroCidades.pas' {CadastroCidades},
+  uInter in 'uInter.pas',
+  uPai in 'uPai.pas',
+  uPaises in 'uPaises.pas',
+  uEstados in 'uEstados.pas',
+  uCidades in 'uCidades.pas',
+  uCtrlPaises in 'uCtrlPaises.pas',
+  uCtrlEstados in 'uCtrlEstados.pas',
+  uCtrlCidades in 'uCtrlCidades.pas',
+  uDaoPaises in 'uDaoPaises.pas',
+  uDaoEstados in 'uDaoEstados.pas',
+  uDaoCidades in 'uDaoCidades.pas',
+  uDM in 'uDM.pas' {DM: TDataModule};
+
+{$R *.res}
+var
+   Gerente:TGerente;
+
+begin
+   Gerente:= TGerente.Create(nil);
+   Gerente.ShowModal;
+   Gerente.FreeInstance;
+
+ // Application.Initialize;
+ // Application.MainFormOnTaskbar := True;
+ // Application.CreateForm(TGerente, Gerente);
+ // Application.CreateForm(TConsultaPai, ConsultaPai);
+ // Application.CreateForm(TConsultaPaises, ConsultaPaises);
+ // Application.CreateForm(TConsultaEstados, ConsultaEstados);
+ // Application.CreateForm(TConsultaCidades, ConsultaCidades);
+ // Application.CreateForm(TCadastroPai, CadastroPai);
+ // Application.CreateForm(TCadastroPaises, CadastroPaises);
+ // Application.CreateForm(TCadastroEstados, CadastroEstados);
+ // Application.CreateForm(TCadastroCidades, CadastroCidades);
+ // Application.CreateForm(TDM, DM);
+ // Application.Run;
+end.
