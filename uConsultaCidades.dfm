@@ -6,6 +6,9 @@ inherited ConsultaCidades: TConsultaCidades
   inherited btn_Excluir: TButton
     OnExit = edtChaveExit
   end
+  inherited btn_Sair: TButton
+    OnExit = edtChaveExit
+  end
   inherited DBGrid1: TDBGrid
     Left = 33
     Top = 73

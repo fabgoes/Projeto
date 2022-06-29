@@ -1,0 +1,5 @@
+inherited CadastrodeFuncionarios: TCadastrodeFuncionarios
+  Caption = 'Cadastro de Funcionarios'
+  PixelsPerInch = 96
+  TextHeight = 13
+end

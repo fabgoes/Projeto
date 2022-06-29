@@ -43,7 +43,7 @@ begin
         mEstado.setCodigo(aDM.QEstados.FieldByName('CODESTADO').Value);
         mEstado.setEstado( aDM.QEstados.FieldByName('ESTADO').AsString);
         mEstado.setUF( aDM.QEstados.FieldByName('UF').AsString);
-        mEstado.getoPais.setCodigo( aDM.QEstados.FieldByName('oPAIS').Value);
+        mEstado.getoPais.setCodigo( aDM.QEstados.FieldByName('CODPAIS').Value);
         result := '';
       end;
    except on e:exception do
@@ -125,7 +125,7 @@ begin
         begin
           mSql := 'update Estados set estado = :Estado , uf = :uf, codpais = :codpais';
           mSql := mSql + ' where codEstado = :CodEstado';
-          //mSql := mSql + ' where codPais = :CodPais;';
+
         end;
 
         aDM.QEstados.SQL.Clear;

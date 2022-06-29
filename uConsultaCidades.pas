@@ -13,6 +13,7 @@ type
     procedure btn_PesquisarClick(Sender: TObject);
     procedure btn_ExcluirClick(Sender: TObject);
     procedure edtChaveExit(Sender: TObject);
+    procedure btn_SairClick(Sender: TObject);
   private
     { Private declarations }
     oCadastroCidades  : TCadastroCidades;
@@ -62,6 +63,13 @@ procedure TConsultaCidades.btn_PesquisarClick(Sender: TObject);
 begin
   inherited;
   aCtrlCidade.Pesquisar(self.chave.Text);
+end;
+
+procedure TConsultaCidades.btn_SairClick(Sender: TObject);
+begin
+  inherited;
+  if self.btn_Sair.Caption = 'Selecionar' then
+     actrlCidade.Carregar(aCidade);
 end;
 
 procedure TConsultaCidades.conhecaObj(pObj, pCtrl: TObject  );

@@ -40,8 +40,8 @@ begin
         mCidade.setCodigo(aDM.QCidades.FieldByName('CODCIDADE').Value);
         mCidade.setCidade( aDM.QCidades.FieldByName('CIDADE').AsString);
         mCidade.setDDD( aDM.QCidades.FieldByName('DDD').AsString);
-        //mCidade.getoEstado.setCodigo( aDM.QCidades.FieldByName('oESTADO').Value);
-        result := '';
+        mCidade.getoEstado.setCodigo( aDM.QCidades.FieldByName('CODESTADO').Value);
+        //result := '';
       end;
    except on e:exception do
       result:= 'Erro ao carregar: '+ e.Message;
@@ -99,7 +99,7 @@ begin
   else
         mSql := 'select * from Cidades where Cidade like '+quotedstr('%'+pChave+'%') +' order by Cidade; '
   else
-    mSql := 'select * from Cidades where cidade like '+quotedstr('%'+pChave+'%') +'; ';
+    mSql := 'select * from Cidades order by Cidade ';
   aDM.QCidades.Active := false;
   aDM.QCidades.SQL.Clear;
   aDM.QCidades.SQL.Add(mSql);
@@ -117,17 +117,19 @@ begin
       with aDm.QCidades do
       begin
         if mCidade.getCodigo = 0 then
-        mSql := 'insert into cidades (cidade, ddd, codestado) values ( :Cidade, :ddd, :codestado)'
+        mSql := ' insert into cidades (cidade, ddd, codestado) values ( :Cidade, :ddd, :codestado)'
         else
         begin
           mSql := 'update Cidades set cidade = :Cidade , ddd = :ddd, codEstado = :codEstado';
           mSql := mSql + ' where codCidade = :CodCidade';
-         // mSql := mSql + ' where codEstado = :CodEstado';
+
         end;
+
         aDM.QCidades.SQL.Clear;
         aDm.QCidades.SQL.Add(mSql);
         ParamByName('Cidade').Value :=mCidade.getCidade;
         ParamByName('DDD').Value :=mCidade.getDDD;
+
         if mCidade.getCodigo <> 0 then
         ParamByName('codCidade').Value :=mCidade.getCodigo;
         ParamByName('codEstado').Value :=mCidade.getoEstado.getCodigo;

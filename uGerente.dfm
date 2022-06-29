@@ -37,12 +37,15 @@ object Gerente: TGerente
       end
       object Clientes1: TMenuItem
         Caption = '&Clientes'
+        OnClick = Clientes1Click
       end
-      object Clientes2: TMenuItem
+      object Fornecedores1: TMenuItem
         Caption = '&Fornecedores'
+        OnClick = Fornecedores1Click
       end
       object Funcionarios1: TMenuItem
         Caption = 'F&uncionarios'
+        OnClick = Funcionarios1Click
       end
       object Servios1: TMenuItem
         Caption = '&Servi'#231'os'

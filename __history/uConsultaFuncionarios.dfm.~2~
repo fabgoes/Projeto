@@ -1,0 +1,6 @@
+inherited ConsultaFuncionarios: TConsultaFuncionarios
+  Caption = 'Consulta Funcionarios'
+  ExplicitTop = -96
+  PixelsPerInch = 96
+  TextHeight = 13
+end

@@ -45,7 +45,9 @@ procedure TCadastroPaises.bloqueiaEdit;
 begin
   inherited;
   self.edt_Codigo.Enabled     := false;
-  self.edt_DataCad.Enabled    := false;
+  self.edt_Pais.Enabled       := false;
+  self.edt_DDI.Enabled        := false;
+  self.edt_Sigla.Enabled      := false;
   self.edt_DataUltAlt.Enabled := false;
 
 end;
@@ -53,11 +55,12 @@ end;
 procedure TCadastroPaises.carregaEdit;
 begin
   inherited;
-  self.edt_Codigo.Text  := inttostr( oPais.getCodigo);
-  edt_Pais.Text         := oPais.getPais;
-  edt_DDI.Text          := oPais.getDDI;
-  edt_Sigla.Text        := oPais.getSigla;
-  self.edt_DataCad.Text := oPais.getDataCad;
+  self.edt_Codigo.Text     := inttostr( oPais.getCodigo);
+  edt_Pais.Text            := oPais.getPais;
+  edt_DDI.Text             := oPais.getDDI;
+  edt_Sigla.Text           := oPais.getSigla;
+  self.edt_DataCad.Text    := oPais.getDataCad;
+  self.edt_DataUltAlt.Text := oPais.getDataUltAlt;
 
 end;
 
@@ -82,16 +85,16 @@ end;
 
 procedure TCadastroPaises.edt_PaisExit(Sender: TObject);
 //var
- // mX : string;
+  //mX : string;
 begin
    //inherited;
-   //mX := aCtrlPais.pesquisar(edt_Pais.Text);
+  // mX := aCtrlPais.pesquisar(edt_Pais.Text);
 
    //if aCtrlPais.AcheiReg then
   // begin
-   //   showmessage(self.edt_pais.text +' ,ja cadastrado !!, ');
+  //    showmessage(self.edt_pais.text +' ,ja cadastrado !!, ');
    //   self.edt_Pais.SetFocus;
-   //end;
+  // end;
 
 end;
 
@@ -111,8 +114,8 @@ begin
 end;
 
 procedure TCadastroPaises.salvar;
-//var
- //msg: string;
+var
+ msg: string;
 begin
 
   if edt_pais.Text = '' then
@@ -137,12 +140,12 @@ begin
      self.aCtrlPais.Salvar(oPais.clone);
 
   //else
- //// begin
-    //  msg:=  aCtrlPais.Excluir(oPais.clone);
-    //  if  msg = '' then
-     //   showmessage ('Pais Excluido com sucesso!')
-   // else
-         //showmessage ('Problema na exclusao:'+msg)
+  //begin
+     // msg:=  aCtrlPais.Excluir(oPais.clone);
+     // if  msg = '' then
+       // showmessage ('Pais Excluido com sucesso!')
+    //else
+     //    showmessage ('Problema na exclusao:'+msg)
 
 
 
@@ -151,5 +154,6 @@ begin
   inherited;
 
 end;
+
 
 end.

@@ -7,7 +7,9 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus,
   uCidades, uEstados, uPaises,
   uController, uCtrlCidades, uCtrlEstados,  uCtrlPaises,
-  uInter, uDM, uDao;
+  uInter, uDM, uDao,
+  uClientes, uCtrlClientes, uFuncionarios, uCtrlFuncionarios, uFornecedores,
+  uCtrlFornecedores;
 
 type
   TGerente = class(TForm)
@@ -18,7 +20,7 @@ type
     Cidades1: TMenuItem;
     N2: TMenuItem;
     Clientes1: TMenuItem;
-    Clientes2: TMenuItem;
+    Fornecedores1: TMenuItem;
     Funcionarios1: TMenuItem;
     Servios1: TMenuItem;
     Produtos1: TMenuItem;
@@ -38,17 +40,28 @@ type
     procedure Cidades1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Sair4Click(Sender: TObject);
+    procedure Clientes1Click(Sender: TObject);
+    procedure Funcionarios1Click(Sender: TObject);
+    procedure Fornecedores1Click(Sender: TObject);
+   // procedure FornecedoresClick(Sender: TObject);
+
   private
     { Private declarations }
-    aInter  : Inter;
-    aDM     : TDM;
-    oPais   : Paises;
-    oEstado : Estados;
-    aCidade : Cidades;
+    aInter       : Inter;
+    aDM          : TDM;
+    oPais        : Paises;
+    oEstado      : Estados;
+    aCidade      : Cidades;
+    oCliente     : Clientes;
+    oFuncionario : Funcionarios;
+    oFornecedor  : Fornecedores;
 
-    aCtrlPais    : CtrlPaises;
-    aCtrlEstado  : CtrlEstados;
-    aCtrlCidade  : CtrlCidades;
+    aCtrlPais        : CtrlPaises;
+    aCtrlEstado      : CtrlEstados;
+    aCtrlCidade      : CtrlCidades;
+    aCtrlCliente     : CtrlClientes;
+    aCtrlFuncionario : CtrlFuncionarios;
+    aCtrlFornecedor  : CtrlFornecedores;
 
   public
     { Public declarations }
@@ -66,6 +79,13 @@ begin
    aInter.PDCidades(aCidade, aCtrlCidade);
 end;
 
+procedure TGerente.Clientes1Click(Sender: TObject);
+begin
+   aInter.PDClientes(oCliente, aCtrlCliente);
+end;
+
+
+
 procedure TGerente.Estados1Click(Sender: TObject);
 begin
    aInter.PDEstados(oEstado, aCtrlEstado);
@@ -73,22 +93,46 @@ end;
 
 procedure TGerente.FormCreate(Sender: TObject);
 begin
-   oPais        := Paises.CrieObj;
-   oEstado      := Estados.CrieObj;
-   aCidade      := Cidades.crieObj;
-   aInter       := Inter.CrieObj;
-   aCtrlPais    := CtrlPaises.CrieObj;
-   aCtrlEstado  := CtrlEstados.CrieObj;
-   aCtrlCidade  := CtrlCidades.CrieObj;
-   aDM          := TDM.Create(nil);
+   oPais            := Paises.CrieObj;
+   oEstado          := Estados.CrieObj;
+   aCidade          := Cidades.crieObj;
+   oCliente         := Clientes.crieObj;
+   oFuncionario     := Funcionarios.CrieObj;
+   oFornecedor      := Fornecedores.CrieObj;
+   aInter           := Inter.CrieObj;
+   aCtrlPais        := CtrlPaises.CrieObj;
+   aCtrlEstado      := CtrlEstados.CrieObj;
+   aCtrlCidade      := CtrlCidades.CrieObj;
+   aCtrlCliente     := CtrlClientes.CrieObj;
+   aCtrlFuncionario := CtrlFuncionarios.CrieObj;
+   aCtrlFornecedor  := CtrlFornecedores.CrieObj;
+   aDM              := TDM.Create(nil);
    aCtrlCidade.setDM(aDM);
    aCtrlEstado.setDM (aDM);
    aCtrlPais.setDM(aDM);
+   aCtrlCliente.setDM(aDM);
+   aCtrlFuncionario.setDM(aDM);
+   aCtrlFornecedor.setDM(aDM);
 
    aCtrlEstado.setaCtrlPais(aCtrlPais);
    aCtrlCidade.setaCtrlEstado(aCtrlEstado);
+   aCtrlCliente.setaCtrlCidade(aCtrlCidade);
+   aCtrlFuncionario.setaCtrlCidade(aCtrlCidade);
+   aCtrlFornecedor.setaCtrlCidade(aCtrlCidade);
 
 
+end;
+
+
+
+procedure TGerente.Fornecedores1Click(Sender: TObject);
+begin
+   aInter.PDFornecedores(oFornecedor, aCtrlFornecedor);
+end;
+
+procedure TGerente.Funcionarios1Click(Sender: TObject);
+begin
+   aInter.PDFuncionarios(oFuncionario, aCtrlFuncionario);
 end;
 
 procedure TGerente.Paises1Click(Sender: TObject);

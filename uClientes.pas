@@ -3,15 +3,16 @@ unit uClientes;
 interface
 
 uses
-  Classes, SysUtils, uPai, uPessoas;
+  Classes, SysUtils, uPai, uPessoas,  Vcl.ComCtrls;
 
 type
    Clientes = class (Pessoas)
   protected
-    //codCliente : integer;
-    Cliente    : string[50];
-    RG         : string[20];
-    CPF        : string[20];
+    FormaPag   : string [50];
+    CNPJ       : string [11];
+    Celular    : string [14];
+
+
 
 
 
@@ -19,14 +20,12 @@ type
   public
    constructor CrieObj;
    destructor Destrua_se;
-   //procedure setCodCliente(pCodCliente:integer);
-   procedure setCliente(pCliente:string);
-   procedure setRG(pRG:string);
-   procedure setCPF(pCPF:string);
-   //function getCodCliente:integer;
-   function getCliente:string;
-   function getRG:string;
-   function getCPF:string;
+   procedure setFormaPag(pFormaPag:string);
+   procedure setCNPJ(pCNPJ:string);
+   procedure setCelular(pCelular:string);
+   function getFormaPag:string;
+   function getCNPJ:string;
+   function getCelular:string;
    function Clone: Clientes;
 
 
@@ -41,49 +40,54 @@ implementation
 
 constructor Clientes.CrieObj;
 begin
- // codCliente := 0;
-  Cliente := '';
-  RG:= '';
-  CPF:= '';
+  inherited;
+  FormaPag := '';
+  CNPJ     := '';
+  Celular  := '';
+
 end;
 
 destructor Clientes.Destrua_se;
 begin
-
+   inherited;
 end;
 
-function Clientes.getCliente: string;
+
+
+
+function Clientes.getCelular: string;
 begin
-   result := Cliente;
+    result:= Celular;
 end;
 
-
-
-function Clientes.getCPF: string;
+function Clientes.getCNPJ: string;
 begin
-   result := CPF;
+   result := CNPJ;
 end;
 
-function Clientes.getRG: string;
+function Clientes.getFormaPag: string;
 begin
-   result := RG;
+   result:= FormaPag;
 end;
 
-procedure Clientes.setCliente(pCliente: string);
+
+
+procedure Clientes.setCelular(pCelular: string);
 begin
-    Cliente := pCliente;
+   Celular:= pCelular;
 end;
 
-
-procedure Clientes.setCPF(pCPF: string);
+procedure Clientes.setCNPJ(pCNPJ: string);
 begin
-   CPF:= pCPF ;
+    CNPJ := pCNPJ;
 end;
 
-procedure Clientes.setRG(pRG: string);
+procedure Clientes.setFormaPag(pFormaPag: string);
 begin
-   RG := pRG;
+   FormaPag:= pFormaPag;
 end;
+
+
 
 function Clientes.Clone: Clientes;
 begin
@@ -91,7 +95,9 @@ begin
    result.setCodigo(Codigo);
    result.setDataCad(DataCad);
    result.setDataUltAlt(DataUltAlt);
-   result.setCliente(Cliente);
+   result.setNome(Nome);
+   result.setCNPJ(CNPJ);
+   result.setFormaPag(FormaPag);
    result.setSexo(Sexo);
    result.setRG(RG);
    result.setCPF(CPF);
@@ -101,8 +107,10 @@ begin
    result.setBairro(Bairro);
    result.setLogradouro(Logradouro);
    result.setNumero(Numero);
+   result.setaCidade(aCidade.clone);
    result.setComplemento(Complemento);
    result.setDataNasc(DataNasc);
+   result.setCelular(Celular);
 
 end;
 

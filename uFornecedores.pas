@@ -7,13 +7,15 @@ uses
 
 type
    Fornecedores = class (Pessoas)
+  private
+
   protected
-    CNPJ       : string[20];
-    RG         : string[10];
-    CPF        : string[20];
-    Site       : string[100];
-    Observacao : string[200];
-    RazaoSocial: string[50];
+    CNPJ              : string[11];
+    Site              : string[100];
+    RazaoSocial       : string[50];
+    Celular           : string[14];
+    FormaPag          : string[10];
+    Observacao        : string[200];
 
 
 
@@ -22,17 +24,17 @@ type
    constructor CrieObj;
    destructor Destrua_se;
    procedure setCNPJ(pCNPJ:string);
-   procedure setRG(pRG:string);
-   procedure setCPF(pCPF:string);
    procedure setSite(pSite:string);
+   procedure setFormaPag(pFormaPag:string);
    procedure setObservacao(pObservacao:string);
    procedure setRazaoSocial(pRazaoSocial:string);
+   procedure setCelular(pCelular:string);
    function getCNPJ:string;
-   function getRG:string;
-   function getCPF:string;
    function getSite:string;
+   function getFormaPag:string;
    function getObservacao:string;
    function getRazaoSocial:string;
+   function getCelular:string;
    function Clone: Fornecedores;
 
 
@@ -47,27 +49,29 @@ implementation
 
 constructor Fornecedores.CrieObj;
 begin
-   CNPJ       := '';
-   RG         := '';
-   CPF        := '';
-   Site       := '';
-   Observacao := '';
-   RazaoSocial:= '';
+   inherited;
+   CNPJ           := '';
+   Site           := '';
+   RazaoSocial    := '';
+   Celular        := '';
+   FormaPag       := '';
+   Observacao     := '';
+
 end;
 
 destructor Fornecedores.Destrua_se;
 begin
-
+   inherited;
 end;
 
 function Fornecedores.getCNPJ: string;
 begin
-   result:=CNPJ;
+   result:= CNPJ;
 end;
 
-function Fornecedores.getCPF: string;
+function Fornecedores.getFormaPag: string;
 begin
-   result:=CPF;
+   result :=FormaPag;
 end;
 
 function Fornecedores.getObservacao: string;
@@ -80,14 +84,16 @@ begin
    result:= RazaoSocial;
 end;
 
-function Fornecedores.getRG: string;
-begin
-   result := RG;
-end;
 
 function Fornecedores.getSite: string;
 begin
    result:= Site;
+end;
+
+
+function Fornecedores.getCelular: string;
+begin
+   result:= Celular;
 end;
 
 procedure Fornecedores.setCNPJ(pCNPJ: string);
@@ -95,9 +101,9 @@ begin
    CNPJ:=pCNPJ;
 end;
 
-procedure Fornecedores.setCPF(pCPF: string);
+procedure Fornecedores.setFormaPag(pFormaPag: string);
 begin
-   CPF := pCPF;
+    FormaPag:= pFormaPag;
 end;
 
 procedure Fornecedores.setObservacao(pObservacao: string);
@@ -110,14 +116,16 @@ begin
    RazaoSocial:=pRazaoSocial;
 end;
 
-procedure Fornecedores.setRG(pRG: string);
-begin
-   RG := pRG;
-end;
 
 procedure Fornecedores.setSite(pSite: string);
 begin
    Site:= pSite;
+end;
+
+
+procedure Fornecedores.setCelular(pCelular: string);
+begin
+   Celular:= pCelular;
 end;
 
 function Fornecedores.Clone: Fornecedores;
@@ -131,6 +139,7 @@ begin
    result.setRG(RG);
    result.setCPF(CPF);
    result.setTelefone(Telefone);
+   result.setCelular(Celular);
    result.setEmail(Email);
    result.setCEP(CEP);
    result.setBairro(Bairro);
@@ -138,7 +147,9 @@ begin
    result.setNumero(Numero);
    result.setComplemento(Complemento);
    result.setCNPJ(CNPJ);
+   result.setFormaPag(FormaPag);
    result.setSite(Site);
+   result.setCNPJ(CNPJ);
    result.setObservacao(Observacao);
    result.setRazaoSocial(RazaoSocial);
    result.setDataNasc(DataNasc);

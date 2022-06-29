@@ -1,0 +1,203 @@
+inherited CadastrodeClientes: TCadastrodeClientes
+  Caption = 'Cadastro de Clientes'
+  ClientHeight = 594
+  ClientWidth = 867
+  ExplicitWidth = 883
+  ExplicitHeight = 633
+  PixelsPerInch = 96
+  TextHeight = 13
+  inherited lbl_RG: TLabel
+    Left = 650
+    ExplicitLeft = 650
+  end
+  inherited lbl_DataNasc: TLabel
+    Left = 424
+    ExplicitLeft = 424
+  end
+  inherited lbl_Sexo: TLabel
+    Left = 648
+    ExplicitLeft = 648
+  end
+  inherited lbl_Telefone: TLabel
+    Left = 24
+    Top = 189
+    ExplicitLeft = 24
+    ExplicitTop = 189
+  end
+  inherited lbl_Email: TLabel
+    Left = 280
+    Top = 189
+    ExplicitLeft = 280
+    ExplicitTop = 189
+  end
+  inherited lbl_CEP: TLabel
+    Left = 668
+    Top = 189
+    ExplicitLeft = 668
+    ExplicitTop = 189
+  end
+  inherited lbl_Bairro: TLabel
+    Left = 533
+    Top = 258
+    ExplicitLeft = 533
+    ExplicitTop = 258
+  end
+  inherited lbl_Complemento: TLabel
+    Left = 34
+    Top = 336
+    ExplicitLeft = 34
+    ExplicitTop = 336
+  end
+  inherited lbl_codCidade: TLabel
+    Left = 335
+    Width = 84
+    Caption = 'Codigo da Cidade'
+    ExplicitLeft = 335
+    ExplicitWidth = 84
+  end
+  inherited lbl_Cidade: TLabel
+    Left = 484
+    ExplicitLeft = 484
+  end
+  object lbl_CNPJ: TLabel [17]
+    Left = 216
+    Top = 104
+    Width = 25
+    Height = 13
+    Caption = 'CNPJ'
+  end
+  object lbl_FormaPag: TLabel [18]
+    Left = 515
+    Top = 189
+    Width = 102
+    Height = 13
+    Caption = 'Forma de Pagamento'
+  end
+  object lbl_Celular: TLabel [19]
+    Left = 160
+    Top = 189
+    Width = 33
+    Height = 13
+    Caption = 'Celular'
+  end
+  inherited lbl_codUsuario: TLabel
+    Left = 316
+    Top = 416
+    ExplicitLeft = 316
+    ExplicitTop = 416
+  end
+  inherited edt_Codigo: TEdit
+    Enabled = False
+  end
+  inherited edt_CodUsuario: TEdit
+    Top = 435
+    TabOrder = 23
+    ExplicitTop = 435
+  end
+  inherited edt_Nome: TEdit
+    Width = 473
+    ExplicitWidth = 473
+  end
+  inherited edt_RG: TEdit
+    Left = 648
+    Width = 161
+    ExplicitLeft = 648
+    ExplicitWidth = 161
+  end
+  inherited edt_DataNasc: TEdit
+    Left = 424
+    ExplicitLeft = 424
+  end
+  inherited edt_Sexo: TEdit
+    Left = 650
+    Width = 159
+    ExplicitLeft = 650
+    ExplicitWidth = 159
+  end
+  inherited edt_Telefone: TEdit
+    Left = 24
+    Top = 208
+    Width = 111
+    MaxLength = 14
+    ExplicitLeft = 24
+    ExplicitTop = 208
+    ExplicitWidth = 111
+  end
+  inherited edt_Email: TEdit
+    Left = 280
+    Top = 208
+    ExplicitLeft = 280
+    ExplicitTop = 208
+  end
+  inherited edt_CEP: TEdit
+    Left = 665
+    Top = 208
+    Width = 144
+    MaxLength = 8
+    ExplicitLeft = 665
+    ExplicitTop = 208
+    ExplicitWidth = 144
+  end
+  inherited edt_Bairro: TEdit
+    Left = 533
+    Top = 277
+    Width = 220
+    ExplicitLeft = 533
+    ExplicitTop = 277
+    ExplicitWidth = 220
+  end
+  inherited edt_Complemento: TEdit
+    Left = 34
+    Top = 358
+    ExplicitLeft = 34
+    ExplicitTop = 358
+  end
+  inherited edt_codCidade: TEdit
+    Left = 337
+    ExplicitLeft = 337
+  end
+  inherited edt_Cidade: TEdit
+    Left = 484
+    ExplicitLeft = 484
+  end
+  inherited btn_Pesquisar: TButton
+    Left = 668
+    Top = 354
+    OnClick = btn_PesquisarClick
+    ExplicitLeft = 668
+    ExplicitTop = 354
+  end
+  object edt_CNPJ: TEdit
+    Left = 216
+    Top = 123
+    Width = 153
+    Height = 21
+    MaxLength = 11
+    TabOrder = 20
+  end
+  object edt_FormaPag: TEdit
+    Left = 512
+    Top = 208
+    Width = 121
+    Height = 21
+    MaxLength = 30
+    TabOrder = 21
+  end
+  object edt_Celular: TEdit
+    Left = 153
+    Top = 208
+    Width = 121
+    Height = 21
+    MaxLength = 14
+    TabOrder = 22
+  end
+  object DateTimePicker1: TDateTimePicker
+    Left = 352
+    Top = 304
+    Width = 186
+    Height = 26
+    Date = 44727.000000000000000000
+    Time = 44727.000000000000000000
+    TabOrder = 24
+  end
+end

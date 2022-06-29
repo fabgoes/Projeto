@@ -2,8 +2,8 @@ object CadastroPai: TCadastroPai
   Left = 0
   Top = 0
   Caption = 'Cadastro'
-  ClientHeight = 509
-  ClientWidth = 672
+  ClientHeight = 548
+  ClientWidth = 772
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,25 +21,25 @@ object CadastroPai: TCadastroPai
     Caption = 'Codigo'
   end
   object lbl_DataCad: TLabel
-    Left = 24
-    Top = 440
+    Left = 8
+    Top = 392
     Width = 85
     Height = 13
     Caption = 'Data de Cadastro'
   end
   object lbl_DataUltAtl: TLabel
-    Left = 182
-    Top = 440
+    Left = 150
+    Top = 392
     Width = 104
     Height = 13
     Caption = 'Data Ultima Alteracao'
   end
-  object lbl_CodUsuario: TLabel
-    Left = 337
-    Top = 440
-    Width = 72
+  object lbl_codUsuario: TLabel
+    Left = 313
+    Top = 392
+    Width = 53
     Height = 13
-    Caption = 'Codigo Usuario'
+    Caption = 'codUsuario'
   end
   object edt_Codigo: TEdit
     Left = 32
@@ -49,45 +49,45 @@ object CadastroPai: TCadastroPai
     TabOrder = 0
   end
   object edt_DataCad: TEdit
-    Left = 24
-    Top = 472
+    Left = 8
+    Top = 411
     Width = 121
     Height = 21
     Enabled = False
     TabOrder = 1
   end
   object edt_DataUltAlt: TEdit
-    Left = 182
-    Top = 472
+    Left = 150
+    Top = 411
     Width = 121
     Height = 21
     Enabled = False
     TabOrder = 2
   end
-  object edt_CodUsuario: TEdit
-    Left = 337
-    Top = 459
-    Width = 97
-    Height = 21
-    Enabled = False
-    TabOrder = 3
-  end
   object btn_Salvar: TButton
-    Left = 488
-    Top = 476
+    Left = 480
+    Top = 409
     Width = 75
     Height = 25
     Caption = '&Salvar'
-    TabOrder = 4
+    TabOrder = 3
     OnClick = btn_SalvarClick
   end
   object btn_Sair: TButton
-    Left = 589
-    Top = 476
+    Left = 581
+    Top = 409
     Width = 75
     Height = 25
     Caption = 'Sai&r'
-    TabOrder = 5
+    TabOrder = 4
     OnClick = btn_SairClick
+  end
+  object edt_CodUsuario: TEdit
+    Left = 313
+    Top = 411
+    Width = 97
+    Height = 21
+    Enabled = False
+    TabOrder = 5
   end
 end

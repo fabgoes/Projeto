@@ -79,13 +79,15 @@ begin
 end;
 
 function Cidades.clone: Cidades;
+
 begin
-  result := Cidades.crieObj;
+  result:= Cidades.crieObj;
   result.setCodigo(codigo);
   result.setCidade(cidade);
   result.setDDD(ddd);
   result.setoEstado(oEstado.clone);
   result.setDataCad(dataCad);
+  //result := acidade;
 end;
 
 end.

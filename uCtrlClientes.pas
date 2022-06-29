@@ -1,13 +1,14 @@
 unit uCtrlClientes;
 
 interface
-   uses uController, Data.DB, uDaoClientes, uDM,Datasnap.DBClient;
+   uses uController, Data.DB, uDaoClientes, uDM,Datasnap.DBClient, uCtrlCidades;
    type
       CtrlClientes = class (controller)
      private
 
      protected
          aDaoCliente : DaoClientes;
+         aCtrlCidade  : CtrlCidades;
      public
 
        constructor CrieObj;
@@ -18,6 +19,8 @@ interface
        procedure Pesquisar ( pChave : string );         override;
        function getDS : TObject;                        override;
        Procedure setDM(pDM : TObject);                  override;
+       function getaCtrlCidade :TObject;
+       procedure setaCtrlCidade (paCtrlCidade: TObject);
        function AcheiReg(): boolean;
    end;
 
@@ -37,7 +40,7 @@ end;
 
 constructor CtrlClientes.CrieObj;
 begin
-    aDaoCliente:= DaoClientes.CrieObj;
+   aDaoCliente:= DaoClientes.CrieObj;
 end;
 
 destructor CtrlClientes.Destrua_se;
@@ -47,7 +50,12 @@ end;
 
 function CtrlClientes.Excluir(pObj: TObject): string;
 begin
-   aDaoCliente.Excluir(pObj);
+   result := aDaoCliente.Excluir(pObj);
+end;
+
+function CtrlClientes.getaCtrlCidade: TObject;
+begin
+   result:= aCtrlCidade;
 end;
 
 function CtrlClientes.getDS: TObject;
@@ -57,13 +65,18 @@ end;
 
 procedure CtrlClientes.Pesquisar(pChave: string);
 begin
-  inherited;
+
   aDaoCliente.Pesquisar(pchave);
 end;
 
 function CtrlClientes.Salvar(pObj: TObject): string;
 begin
    result := aDaoCliente.Salvar(pObj);
+end;
+
+procedure CtrlClientes.setaCtrlCidade(paCtrlCidade: TObject);
+begin
+    aCtrlCidade := CtrlCidades(paCtrlCidade);
 end;
 
 procedure CtrlClientes.setDM(pDM: TObject);

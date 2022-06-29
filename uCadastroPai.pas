@@ -12,12 +12,12 @@ type
     edt_Codigo: TEdit;
     lbl_DataCad: TLabel;
     lbl_DataUltAtl: TLabel;
-    lbl_CodUsuario: TLabel;
     edt_DataCad: TEdit;
     edt_DataUltAlt: TEdit;
-    edt_CodUsuario: TEdit;
     btn_Salvar: TButton;
     btn_Sair: TButton;
+    edt_CodUsuario: TEdit;
+    lbl_codUsuario: TLabel;
     procedure btn_SairClick(Sender: TObject);
     procedure btn_SalvarClick(Sender: TObject);
   private

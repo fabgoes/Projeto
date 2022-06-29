@@ -187,10 +187,21 @@
         <DCCReference Include="uDaoFornecedores.pas"/>
         <DCCReference Include="uCtrlClientes.pas"/>
         <DCCReference Include="uCtrlFuncionarios.pas"/>
-        <DCCReference Include="uCtrlFornecedores.pas"/>
-        <DCCReference Include="uCadastroClientes.pas">
-            <Form>CadastroClientes</Form>
-            <FormType>dfm</FormType>
+        <DCCReference Include="uCtrlFornecedores.pas">
+            <Form>,
+  uCadastrodePessoas in &apos;uCadastrodePessoas.pas&apos; {CadastrodePessoas</Form>
+        </DCCReference>
+        <DCCReference Include="uCadastrodePessoas.pas">
+            <Form>CadastrodePessoas</Form>
+        </DCCReference>
+        <DCCReference Include="uCadastrodeClientes.pas">
+            <Form>CadastrodeClientes</Form>
+        </DCCReference>
+        <DCCReference Include="uCadastrodeFuncionarios.pas">
+            <Form>CadastrodeFuncionarios</Form>
+        </DCCReference>
+        <DCCReference Include="uCadastrodeFornecedores.pas">
+            <Form>CadastrodeFornecedores</Form>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

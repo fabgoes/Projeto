@@ -116,7 +116,7 @@ inherited CadastroCidades: TCadastroCidades
     TabOrder = 9
   end
   object btn_Pesquisar: TButton
-    Left = 334
+    Left = 340
     Top = 145
     Width = 75
     Height = 25

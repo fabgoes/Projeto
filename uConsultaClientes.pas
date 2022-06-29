@@ -5,15 +5,16 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uConsultaPai, Data.DB, Vcl.Grids,
-  Vcl.DBGrids, Vcl.StdCtrls, uClientes, uCtrlClientes, uCadastroClientes;
+  Vcl.DBGrids, Vcl.StdCtrls, uClientes, uCtrlClientes, uCadastrodeClientes;
 
 type
   TConsultaClientes = class(TConsultaPai)
     procedure btn_ExcluirClick(Sender: TObject);
     procedure btn_PesquisarClick(Sender: TObject);
+    procedure btn_SairClick(Sender: TObject);
   private
     { Private declarations }
-    oCadastroCliente : TCadastroClientes;
+    oCadastroCliente   : TCadastrodeClientes;
     oCliente           : Clientes;
     aCtrlCliente       : CtrlClientes;
   public
@@ -59,6 +60,14 @@ procedure TConsultaClientes.btn_PesquisarClick(Sender: TObject);
 begin
   inherited;
   aCtrlCliente.Pesquisar(self.chave.Text);
+end;
+
+procedure TConsultaClientes.btn_SairClick(Sender: TObject);
+begin
+  inherited;
+  if self.btn_Sair.Caption = 'Selecionar' then
+     aCtrlCliente.Carregar(oCliente);
+
 end;
 
 procedure TConsultaClientes.conhecaObj(pObj, pCtrl: TObject);
@@ -116,7 +125,7 @@ end;
 procedure TConsultaClientes.setcad(pObj: TObject);
 begin
   inherited;
-  oCadastroCliente := TCadastroClientes(pObj);
+  oCadastroCliente := TCadastrodeClientes(pObj);
 end;
 
 end.

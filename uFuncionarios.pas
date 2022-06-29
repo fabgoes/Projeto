@@ -10,32 +10,26 @@ type
   private
 
   protected
-    Matricula  : integer;
-    RG         : string[20];
-    CPF        : string[20];
-    DataAdm    : string[10];
-    DataDem    : string[10];
-    VSalario   : double;
-
-
-
+    DataAdmissao : string[10];
+    DataDemissao : string[10];
+    VSalario     : currency;
+    Celular      : string[14];
+    Cargo        : string[50];
 
 
   public
    constructor CrieObj;
    destructor Destrua_se;
-   procedure setMatricula(pMatricula:integer);
-   procedure setRG(pRG:string);
-   procedure setCPF(pCPF:string);
-   procedure setDataAdm(pDataAdm:string);
-   procedure setDataDem (pDataDem :string);
-   procedure setVSalario(pVSalario:double);
-   function getMatricula:integer;
-   function getRG:string;
-   function getCPF:string;
-   function getDataAdm:string;
-   function getDataDem:string;
-   function getVSalario:double;
+   procedure setDataAdmissao(pDataAdmissao:string);
+   procedure setDataDemissao (pDataDemissao :string);
+   procedure setVSalario(pVSalario:currency);
+   procedure setCelular (pCelular :string);
+   procedure setCargo (pCargo :string);
+   function getDataAdmissao:string;
+   function getDataDemissao:string;
+   function getVSalario:currency;
+   function getCelular:string;
+   function getCargo:string;
    function Clone: Funcionarios;
 
 
@@ -50,81 +44,78 @@ implementation
 
 constructor Funcionarios.CrieObj;
 begin
-    Matricula  := 0;
-    RG         := '';
-    CPF        := '';
-    DataAdm    := '';
-    DataDem    := '';
-    VSalario   := 0.0;
+    inherited;
+    DataAdmissao    := '';
+    DataDemissao    := '';
+    VSalario        := 0.0;
+    Celular         := '';
+    Cargo           := '';
+
+
 end;
 
 destructor Funcionarios.Destrua_se;
 begin
-
+   inherited;
 end;
 
-function Funcionarios.getCPF: string;
+
+function Funcionarios.getCargo: string;
 begin
-   result := CPF;
+    result:= Cargo;
 end;
 
-function Funcionarios.getDataAdm: string;
+function Funcionarios.getCelular: string;
 begin
-   result := DataAdm;
+   result := Celular;
 end;
 
-function Funcionarios.getDataDem: string;
+function Funcionarios.getDataAdmissao: string;
 begin
-   result := DataDem;
+   result := DataAdmissao;
 end;
 
-function Funcionarios.getMatricula: integer;
+function Funcionarios.getDataDemissao: string;
 begin
-   result := Matricula;
+   result := DataDemissao;
 end;
 
-function Funcionarios.getRG: string;
-begin
-   result := RG;
-end;
-
-function Funcionarios.getVSalario: double;
+function Funcionarios.getVSalario: currency;
 begin
    result := VSalario;
 end;
 
-procedure Funcionarios.setCPF(pCPF: string);
+
+
+procedure Funcionarios.setCargo(pCargo: string);
 begin
-   CPF := pCPF;
+   Cargo:= pCargo;
 end;
 
-procedure Funcionarios.setDataAdm(pDataAdm: string);
+procedure Funcionarios.setCelular(pCelular: string);
 begin
-   DataAdm := pDataAdm;
+   Celular:= pCelular;
 end;
 
-procedure Funcionarios.setDataDem(pDataDem: string);
+procedure Funcionarios.setDataAdmissao(pDataAdmissao: string);
 begin
-   DataDem := pDataDem;
+   DataAdmissao := pDataAdmissao;
 end;
 
-procedure Funcionarios.setMatricula(pMatricula: integer);
+procedure Funcionarios.setDataDemissao(pDataDemissao: string);
 begin
-   Matricula := pMatricula;
+   DataDemissao := pDataDemissao;
 end;
 
-procedure Funcionarios.setRG(pRG: string);
-begin
-   RG := pRG;
-end;
 
-procedure Funcionarios.setVSalario(pVSalario: double);
+procedure Funcionarios.setVSalario(pVSalario: currency);
 begin
    VSalario := pVSalario;
 end;
 
 function Funcionarios.Clone: Funcionarios;
 begin
+
    result := Funcionarios.CrieObj;
    result.setCodigo(Codigo);
    result.setDataCad(DataCad);
@@ -140,10 +131,11 @@ begin
    result.setLogradouro(Logradouro);
    result.setNumero(Numero);
    result.setComplemento(Complemento);
-   result.setMatricula(Matricula);
-   result.setDataAdm(DataAdm);
-   result.setDataDem(DataDem);
+   result.setDataAdmissao(DataAdmissao);
+   result.setDataDemissao(DataDemissao);
    result.setVSalario(VSalario);
+   result.setCelular(Celular);
+   result.setCargo(Cargo);
    result.setDataNasc(DataNasc);
 
 end;

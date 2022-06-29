@@ -82,6 +82,7 @@ begin
   result.setUF(uf);
   result.setoPais(oPais.clone);
   result.setDataCad(dataCad);
+  result.setDataCad(DataUltAlt);
 end;
 
 end.

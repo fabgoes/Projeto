@@ -1,0 +1,113 @@
+unit uClientes;
+
+interface
+
+uses
+  Classes, SysUtils, uPai, uPessoas;
+
+type
+   Clientes = class (Pessoas)
+  protected
+    Cliente    : string[50];
+    FormaPag   : string [50];
+    CNPJ       : string [11];
+
+
+
+
+  public
+   constructor CrieObj;
+   destructor Destrua_se;
+   procedure setCliente(pCliente:string);
+   procedure setFormaPag(pFormaPag:string);
+   procedure setCNPJ(pCNPJ:string);
+   function getCliente:string;
+   function getFormaPag:string;
+   function getCNPJ:string;
+   function Clone: Clientes;
+
+
+end;
+
+
+implementation
+
+{ Clientes }
+
+
+
+constructor Clientes.CrieObj;
+begin
+  Cliente := '';
+  FormaPag := '';
+
+end;
+
+destructor Clientes.Destrua_se;
+begin
+
+end;
+
+
+
+function Clientes.getCliente: string;
+begin
+   result := Cliente;
+end;
+
+
+function Clientes.getCNPJ: string;
+begin
+   result := CNPJ;
+end;
+
+function Clientes.getFormaPag: string;
+begin
+   result:= FormaPag;
+end;
+
+procedure Clientes.setCliente(pCliente: string);
+begin
+    Cliente := pCliente;
+end;
+
+
+
+
+procedure Clientes.setCNPJ(pCNPJ: string);
+begin
+    CNPJ := pCNPJ;
+end;
+
+procedure Clientes.setFormaPag(pFormaPag: string);
+begin
+   FormaPag:= pFormaPag;
+end;
+
+
+
+function Clientes.Clone: Clientes;
+begin
+   result:= Clientes.CrieObj;
+   result.setCodigo(Codigo);
+   result.setDataCad(DataCad);
+   result.setDataUltAlt(DataUltAlt);
+   result.setCliente(Cliente);
+   result.setCNPJ(CNPJ);
+   result.setFormaPag(FormaPag);
+   result.setSexo(Sexo);
+   result.setRG(RG);
+   result.setCPF(CPF);
+   result.setTelefone(Telefone);
+   result.setEmail(Email);
+   result.setCEP(CEP);
+   result.setBairro(Bairro);
+   result.setLogradouro(Logradouro);
+   result.setNumero(Numero);
+   result.setaCidade(aCidade);
+   result.setComplemento(Complemento);
+   result.setDataNasc(DataNasc);
+
+end;
+
+end.
