@@ -1,0 +1,92 @@
+unit uCadastrodeGrupos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uCadastroPai, Vcl.StdCtrls,
+  uGrupos, uCtrlGrupos;
+
+type
+  TCadastrodeGrupos = class(TCadastroPai)
+  private
+    { Private declarations }
+    oGrupo         : Grupos;
+    aCtrlGrupo     : CtrlGrupos;
+
+
+  public
+    { Public declarations }
+    procedure sair;                              override;
+    procedure salvar;                            override;
+    procedure limpaEdit;                         override;
+    procedure carregaEdit;                       override;
+    procedure bloqueiaEdit;                      override;
+    procedure desbloqueiaEdit;                   override;
+    procedure conhecaObj(pObj, pCtrl : TObject); override;
+    procedure setConsulta(pObj : TObject);       override;
+  end;
+
+var
+  CadastrodeGrupos: TCadastrodeGrupos;
+
+implementation
+
+{$R *.dfm}
+
+{ TCadastrodeGrupos }
+
+procedure TCadastrodeGrupos.bloqueiaEdit;
+begin
+  inherited;
+  edt_Grupo.Enabled      := false;
+  edt_Situacao.Enabled   := false;
+  edt_Observacao.Enabled := false;
+end;
+
+procedure TCadastrodeGrupos.carregaEdit;
+begin
+  inherited;
+
+
+end;
+
+procedure TCadastrodeGrupos.conhecaObj(pObj, pCtrl: TObject);
+begin
+  inherited;
+
+end;
+
+procedure TCadastrodeGrupos.desbloqueiaEdit;
+begin
+  inherited;
+  edt_Grupo.Enabled      := true;
+  edt_Situacao.Enabled   := true;
+  edt_Observacao.Enabled := true;
+end;
+
+procedure TCadastrodeGrupos.limpaEdit;
+begin
+  inherited;
+
+end;
+
+procedure TCadastrodeGrupos.sair;
+begin
+  inherited;
+
+end;
+
+procedure TCadastrodeGrupos.salvar;
+begin
+  inherited;
+
+end;
+
+procedure TCadastrodeGrupos.setConsulta(pObj: TObject);
+begin
+  inherited;
+
+end;
+
+end.

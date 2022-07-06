@@ -11,10 +11,9 @@ uses
 type
   TConsultaPaises = class(TConsultaPai)
     procedure btn_PesquisarClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure btn_SairClick(Sender: TObject);
-    procedure btn_ExcluirClick(Sender: TObject);
     procedure edtChaveExit(Sender: TObject);
+
 
   private
     { Private declarations }
@@ -52,14 +51,13 @@ begin
   oCadastroPaises.limpaEdit;
   oCadastroPaises.carregaEdit;
   oCadastroPaises.ShowModal;
+  self.DBGrid1.DataSource:= TDataSource(aCtrlPais.getDS);
+  aCtrlPais.Pesquisar(self.chave.Text);
 
 end;
 
-procedure TConsultaPaises.btn_ExcluirClick(Sender: TObject);
-begin
-  inherited;
-  aCtrlPais.Excluir(oPais);
-end;
+
+
 
 procedure TConsultaPaises.btn_PesquisarClick(Sender: TObject);
 begin
@@ -98,6 +96,7 @@ var
   nAux : string;
 begin
   inherited;
+
   aCtrlPais.carregar( oPais);
   oCadastroPaises.conhecaObj(oPais, aCtrlPais);
   oCadastroPaises.limpaEdit;
@@ -108,14 +107,11 @@ begin
   oCadastroPaises.ShowModal;
   oCadastroPaises.desbloqueiaEdit;
   oCadastroPaises.btn_salvar.Caption :=nAux;
+  self.DBGrid1.DataSource:= TDataSource(aCtrlPais.getDS);
+  aCtrlPais.Pesquisar(self.chave.Text);
 
 
-end;
 
-procedure TConsultaPaises.FormCreate(Sender: TObject);
-begin
-  inherited;
-//  oCadastroPaises := TCadastroPaises.Create(nil);
 end;
 
 procedure TConsultaPaises.Incluir;
@@ -126,7 +122,8 @@ begin
   oCadastroPaises.limpaEdit;
   oCadastroPaises.carregaEdit;
   oCadastroPaises.ShowModal;
-  self.Pesquisar;
+  self.DBGrid1.DataSource:= TDataSource(aCtrlPais.getDS);
+  aCtrlPais.Pesquisar(self.chave.Text);
 
 end;
 

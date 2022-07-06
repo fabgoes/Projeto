@@ -6,14 +6,6 @@ inherited CadastrodeClientes: TCadastrodeClientes
   ExplicitHeight = 633
   PixelsPerInch = 96
   TextHeight = 13
-  inherited lbl_RG: TLabel
-    Left = 221
-    ExplicitLeft = 221
-  end
-  inherited lbl_Sexo: TLabel
-    Left = 576
-    ExplicitLeft = 576
-  end
   inherited lbl_Telefone: TLabel
     Left = 34
     Top = 189
@@ -55,14 +47,14 @@ inherited CadastrodeClientes: TCadastrodeClientes
     Top = 128
     ExplicitTop = 128
   end
-  object lbl_FormaPag: TLabel [16]
+  object lbl_FormaPag: TLabel [13]
     Left = 570
     Top = 189
     Width = 102
     Height = 13
     Caption = 'Forma de Pagamento'
   end
-  object lbl_Celular: TLabel [17]
+  object lbl_Celular: TLabel [14]
     Left = 160
     Top = 189
     Width = 33
@@ -73,37 +65,63 @@ inherited CadastrodeClientes: TCadastrodeClientes
     Left = 316
     ExplicitLeft = 316
   end
-  inherited lbl_DataNasc: TLabel
-    Left = 396
-    ExplicitLeft = 396
+  object lbl_RG: TLabel [16]
+    Left = 35
+    Top = 288
+    Width = 14
+    Height = 13
+    Caption = 'RG'
+  end
+  object lbl_CPF: TLabel [17]
+    Left = 223
+    Top = 288
+    Width = 19
+    Height = 13
+    Caption = 'CPF'
+  end
+  object lbl_Sexo: TLabel [18]
+    Left = 379
+    Top = 288
+    Width = 24
+    Height = 13
+    Caption = 'Sexo'
+  end
+  object lbl_DataNasc: TLabel [19]
+    Left = 570
+    Top = 288
+    Width = 46
+    Height = 13
+    Caption = 'DataNasc'
   end
   inherited edt_Codigo: TEdit
     Enabled = False
   end
-  inherited edt_CodUsuario: TEdit
+  inherited edt_DataCad: TEdit
+    TabOrder = 18
+  end
+  inherited edt_DataUltAlt: TEdit
+    TabOrder = 19
+  end
+  inherited btn_Salvar: TButton
     TabOrder = 21
+  end
+  inherited btn_Sair: TButton
+    TabOrder = 22
+  end
+  inherited edt_CodUsuario: TEdit
+    TabOrder = 20
   end
   inherited edt_Nome: TEdit
     Width = 617
+    TabOrder = 1
     ExplicitWidth = 617
-  end
-  inherited edt_RG: TEdit
-    Left = 221
-    Width = 161
-    ExplicitLeft = 221
-    ExplicitWidth = 161
-  end
-  inherited edt_Sexo: TEdit
-    Left = 576
-    Width = 159
-    ExplicitLeft = 576
-    ExplicitWidth = 159
   end
   inherited edt_Telefone: TEdit
     Left = 36
     Top = 208
     Width = 111
     MaxLength = 14
+    TabOrder = 10
     ExplicitLeft = 36
     ExplicitTop = 208
     ExplicitWidth = 111
@@ -111,6 +129,7 @@ inherited CadastrodeClientes: TCadastrodeClientes
   inherited edt_Email: TEdit
     Left = 280
     Top = 208
+    TabOrder = 12
     ExplicitLeft = 280
     ExplicitTop = 208
   end
@@ -119,6 +138,7 @@ inherited CadastrodeClientes: TCadastrodeClientes
     Top = 147
     Width = 127
     MaxLength = 8
+    TabOrder = 6
     ExplicitLeft = 298
     ExplicitTop = 147
     ExplicitWidth = 127
@@ -126,55 +146,91 @@ inherited CadastrodeClientes: TCadastrodeClientes
   inherited edt_Bairro: TEdit
     Top = 147
     Width = 220
+    TabOrder = 5
     ExplicitTop = 147
     ExplicitWidth = 220
   end
   inherited edt_Logradouro: TEdit
     Width = 249
+    TabOrder = 2
     ExplicitWidth = 249
+  end
+  inherited edt_Numero: TEdit
+    TabOrder = 3
   end
   inherited edt_Complemento: TEdit
     Left = 530
+    TabOrder = 4
     ExplicitLeft = 530
   end
   inherited edt_codCidade: TEdit
     Left = 467
     Top = 147
     Width = 84
+    TabOrder = 7
     ExplicitLeft = 467
     ExplicitTop = 147
     ExplicitWidth = 84
   end
   inherited edt_Cidade: TEdit
     Top = 147
+    TabOrder = 8
     ExplicitTop = 147
   end
   inherited btn_Pesquisar: TButton
     Left = 772
     Top = 146
+    TabOrder = 9
     OnClick = btn_PesquisarClick
     ExplicitLeft = 772
     ExplicitTop = 146
   end
-  object edt_FormaPag: TEdit [40]
+  object edt_FormaPag: TEdit
     Left = 570
     Top = 208
     Width = 121
     Height = 21
     MaxLength = 30
-    TabOrder = 19
+    TabOrder = 13
   end
-  object edt_Celular: TEdit [41]
+  object edt_Celular: TEdit
     Left = 153
     Top = 208
     Width = 121
     Height = 21
     MaxLength = 14
-    TabOrder = 20
+    TabOrder = 11
   end
-  inherited edt_DataNasc: TEdit
-    Left = 396
-    TabOrder = 22
-    ExplicitLeft = 396
+  object edt_RG: TEdit
+    Left = 32
+    Top = 307
+    Width = 121
+    Height = 21
+    MaxLength = 9
+    TabOrder = 14
+  end
+  object edt_CPF: TEdit
+    Left = 223
+    Top = 307
+    Width = 121
+    Height = 21
+    MaxLength = 11
+    TabOrder = 15
+  end
+  object edt_Sexo: TEdit
+    Left = 379
+    Top = 307
+    Width = 121
+    Height = 21
+    MaxLength = 10
+    TabOrder = 16
+  end
+  object edt_DataNasc: TEdit
+    Left = 570
+    Top = 307
+    Width = 121
+    Height = 21
+    MaxLength = 10
+    TabOrder = 17
   end
 end

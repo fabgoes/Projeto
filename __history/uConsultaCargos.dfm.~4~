@@ -1,0 +1,6 @@
+inherited ConsultaCargos: TConsultaCargos
+  Caption = 'Consulta Cargos'
+  ExplicitTop = -96
+  PixelsPerInch = 96
+  TextHeight = 13
+end

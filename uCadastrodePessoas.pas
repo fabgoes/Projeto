@@ -9,13 +9,13 @@ uses
 type
   TCadastrodePessoas = class(TCadastroPai)
     lbl_Nome: TLabel;
-    lbl_RG: TLabel;
-    lbl_CPF: TLabel;
+    //lbl_RG: TLabel;
+    //lbl_CPF: TLabel;
     edt_Nome: TEdit;
-    edt_RG: TEdit;
-    edt_CPF: TEdit;
-    lbl_Sexo: TLabel;
-    edt_Sexo: TEdit;
+    //edt_RG: TEdit;
+    //edt_CPF: TEdit;
+   // lbl_Sexo: TLabel;
+   // edt_Sexo: TEdit;
     lbl_Telefone: TLabel;
     lbl_Email: TLabel;
     lbl_CEP: TLabel;
@@ -35,8 +35,8 @@ type
     edt_codCidade: TEdit;
     edt_Cidade: TEdit;
     btn_Pesquisar: TButton;
-    lbl_DataNasc: TLabel;
-    edt_DataNasc: TEdit;
+   // lbl_DataNasc: TLabel;
+    //edt_DataNasc: TEdit;
     procedure btn_SalvarClick(Sender: TObject);
     procedure btn_SairClick(Sender: TObject);
   private
@@ -67,9 +67,9 @@ procedure TCadastrodePessoas.bloqueiaEdit;
 begin
    inherited;
    edt_Nome.Enabled        := false;
-   edt_RG.Enabled          := false;
-   edt_CPF.Enabled         := false;
-   edt_Sexo.Enabled        := false;
+   //edt_RG.Enabled          := false;
+  // edt_CPF.Enabled         := false;
+ //  edt_Sexo.Enabled        := false;
    edt_Telefone.Enabled    := false;
    edt_Email.Enabled       := false;
    edt_CEP.Enabled         := false;
@@ -78,7 +78,7 @@ begin
    edt_Numero.Enabled      := false;
    edt_Complemento.Enabled := false;
    edt_codCidade.Enabled   := false;
-   edt_DataNasc.Enabled    := false;
+ //  edt_DataNasc.Enabled    := false;
 end;
 
 
@@ -91,8 +91,8 @@ end;
 procedure TCadastrodePessoas.btn_SalvarClick(Sender: TObject);
 begin
   inherited;
-  Salvar;
-  Sair;
+  //Salvar;
+  //Sair;
 end;
 
 procedure TCadastrodePessoas.carregaEdit;
@@ -108,9 +108,9 @@ end;
 procedure TCadastrodePessoas.desbloqueiaEdit;
 begin
    edt_Nome.Enabled        := true;
-   edt_RG.Enabled          := true;
-   edt_CPF.Enabled         := true;
-   edt_Sexo.Enabled        := true;
+ //  edt_RG.Enabled          := true;
+ // edt_CPF.Enabled         := true;
+  // edt_Sexo.Enabled        := true;
    edt_Telefone.Enabled    := true;
    edt_Email.Enabled       := true;
    edt_CEP.Enabled         := true;
@@ -119,16 +119,16 @@ begin
    edt_Numero.Enabled      := true;
    edt_Complemento.Enabled := true;
    edt_codCidade.Enabled   := true;
-   edt_DataNasc.Enabled    := true;
+   //edt_DataNasc.Enabled    := true;
 
 end;
 
 procedure TCadastrodePessoas.limpaEdit;
 begin
    self.edt_Nome.Clear;
-   self.edt_RG.Clear;
-   self.edt_CPF.Clear;
-   self.edt_Sexo.Clear;
+  // self.edt_RG.Clear;
+  // self.edt_CPF.Clear;
+  // self.edt_Sexo.Clear;
    self.edt_Telefone.Clear;
    self.edt_Email.Clear;
    self.edt_CEP.Clear;

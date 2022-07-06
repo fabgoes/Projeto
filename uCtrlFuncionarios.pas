@@ -1,7 +1,8 @@
 unit uCtrlFuncionarios;
 
 interface
-   uses uController, Data.DB, uDaoFuncionarios, uDM,Datasnap.DBClient, uCtrlCidades;
+   uses uController, Data.DB, uDaoFuncionarios, uDM,Datasnap.DBClient,
+        uCtrlCidades, uCtrlCargos;
    type
       CtrlFuncionarios = class (controller)
      private
@@ -9,6 +10,7 @@ interface
      protected
          aDaoFuncionario : DaoFuncionarios;
          aCtrlCidade     : CtrlCidades;
+         aCtrlCargo      : CtrlCargos;
      public
 
        constructor CrieObj;
@@ -22,6 +24,8 @@ interface
        function AcheiReg(): boolean;
        function getaCtrlCidade :TObject;
        procedure setaCtrlCidade (paCtrlCidade: TObject);
+       function getaCtrlCargo :TObject;
+       procedure setaCtrlCargo (paCtrlCargo: TObject);
    end;
 
 implementation
@@ -53,6 +57,11 @@ begin
    result := aDaoFuncionario.Excluir(pObj);
 end;
 
+function CtrlFuncionarios.getaCtrlCargo: TObject;
+begin
+    result:= aCtrlCargo;
+end;
+
 function CtrlFuncionarios.getaCtrlCidade: TObject;
 begin
    result:= aCtrlCidade;
@@ -72,6 +81,11 @@ end;
 function CtrlFuncionarios.Salvar(pObj: TObject): string;
 begin
    result := aDaoFuncionario.Salvar(pObj);
+end;
+
+procedure CtrlFuncionarios.setaCtrlCargo(paCtrlCargo: TObject);
+begin
+    aCtrlCargo:= CtrlCargos(paCtrlCargo);
 end;
 
 procedure CtrlFuncionarios.setaCtrlCidade(paCtrlCidade: TObject);

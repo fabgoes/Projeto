@@ -62,12 +62,11 @@ var
 begin
    try
       mCidade := Cidades(pObj);
-      mSql := 'delete * from Cidades where codCidade = '+quotedstr(inttostr(mCidade.getCodigo));
+      mSql := 'delete from Cidades where codCidade = '+inttostr(mCidade.getCodigo);
       aDm.Trans.StartTransaction;
       aDM.QCidades.Active:= false;
       aDm.QCidades.SQL.Clear;
-      aDm.QCidades.SQL.Add(mSql);
-      aDM.QCidades.Open;
+      aDM.QCidades.ExecSQL(mSql);
       aDM.Trans.Commit;
       result := '';
    except on e: Exception do

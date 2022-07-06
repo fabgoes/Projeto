@@ -54,11 +54,11 @@ begin
         mFuncionario.setVSalario( aDM.QFuncionarios.FieldByName('VSalario').Value);
         mFuncionario.setDataAdmissao( aDM.QFuncionarios.FieldByName('DataAdmissao').AsString);
         mFuncionario.setDataDemissao( aDM.QFuncionarios.FieldByName('DataDemissao').AsString);
-        mFuncionario.setCargo( aDM.QFuncionarios.FieldByName('Cargo').AsString);
+        mFuncionario.getoCargo.setCodigo( aDM.QFuncionarios.FieldByName('CodCargo').Value);
         mFuncionario.setDataNasc( aDM.QFuncionarios.FieldByName('DataNasc').AsString);
         mFuncionario.setCelular( aDM.QFuncionarios.FieldByName('Celular').AsString);
-        //mFuncionario.getaCidade.setCodigo( aDM.QFuncionarios.FieldByName('aCidade').Value);
-       // result := '';
+        mFuncionario.getaCidade.setCodigo( aDM.QFuncionarios.FieldByName('codcidade').Value);
+        result := '';
 
       end;
    except on e:exception do
@@ -85,12 +85,11 @@ var
 begin
    try
       mFuncionario:= Funcionarios(pObj);
-      mSql := 'delete from funcionarios where codFuncionario = '+quotedstr(inttostr(mFuncionario.getCodigo));
+      mSql := 'delete from funcionarios where codFuncionario = '+ inttostr(mFuncionario.getCodigo);
       aDm.Trans.StartTransaction;
       aDM.QFuncionarios.Active:= false;
       aDm.QFuncionarios.SQL.Clear;
-      aDm.QFuncionarios.SQL.Add(mSql);
-      aDM.QFuncionarios.Open;
+      aDM.QFuncionarios.ExecSQL(mSql);
       aDM.Trans.Commit;
       result := '';
    except on e: Exception do
@@ -139,10 +138,10 @@ begin
       begin
         if mFuncionario.getCodigo = 0 then
 
-        mSql:='insert into Funcionarios(funcionario,RG,CPF,Sexo,Telefone,Celular,Email,CEP,Bairro,Logradouro,Numero,Complemento,Datanasc, VSalario, DataAdmissao, DataDemissao, codCidade, cargo)' + ' values(:Funcionario,:RG,:CPF,:Sexo,:Telefone,:celular,:Email,:CEP,:Bairro,:Logradouro,:Numero,:Complemento,:Datanasc, :VSalario, :DataAdmissao, :DataDemissao, :codCidade, :cargo)'
+        mSql:='insert into Funcionarios(funcionario,RG,CPF,Sexo,Telefone,Email,Celular,CEP,Bairro,Logradouro,Numero,Complemento, VSalario,  DataAdmissao,Datanasc, DataDemissao, codCidade, codCargo)' + ' values(:Funcionario,:RG,:CPF,:Sexo,:Telefone,:Email,:celular,:CEP,:Bairro,:Logradouro,:Numero,:Complemento,:VSalario,  :DataAdmissao, :Datanasc, :DataDemissao, :codCidade, :codcargo)'
         else
         begin
-          mSql := ' update Funcionarios set funcionario = :Funcionario,RG= :RG,CPF= :CPF,Sexo= :Sexo,Telefone= :Telefone,celular= :celular,Email= :Email,CEP= :CEP,Bairro= :Bairro,Logradouro= :Logradouro,Numero= :Numero, ' + ' Complemento= :Complemento,DataNasc= :Datanasc, VSalario = :VSalario,DataAdmissao = :DataAdmissao, DataDemissao = :DataDemissao, codCidade = :codCidade, cargo= :cargo';
+          mSql := ' update Funcionarios set funcionario = :Funcionario,RG= :RG,CPF= :CPF,Sexo= :Sexo,Telefone= :Telefone,Email= :Email, celular= :celular,CEP= :CEP,Bairro= :Bairro,Logradouro= :Logradouro,Numero= :Numero, ' + ' Complemento= :Complemento, VSalario = :VSalario,DataAdmissao = :DataAdmissao,DataNasc= :Datanasc, DataDemissao = :DataDemissao, codCidade = :codCidade, codcargo= :codcargo';
           mSql := mSql + ' where codFuncionario = :CodFuncionario ';
 
 
@@ -165,7 +164,7 @@ begin
         ParamByName('DATAADMISSAO').Value :=mFuncionario.getDataAdmissao;
         ParamByName('DATANASC').Value :=mFuncionario.getDataNasc;
         ParamByName('DATADEMISSAO').Value :=mFuncionario.getDataDemissao;
-        ParamByName('CARGO').Value :=mFuncionario.getCargo;
+        ParamByName('CODCARGO').Value :=mFuncionario.getoCargo.getCodigo;
         if mFuncionario.getCodigo <> 0 then
         ParamByName('codFuncionario').Value :=mFuncionario.getCodigo;
         ParamByName('CODCIDADE').Value :=mFuncionario.getaCidade.getCodigo;
@@ -174,6 +173,25 @@ begin
       aDM.Trans.Commit;
     except
       aDM.Trans.Rollback;
+
+
+
+
+      end;
+
+
     end;
-end;
+
+
+
+
+
+
+
+
+
+
+
+
+
 end.

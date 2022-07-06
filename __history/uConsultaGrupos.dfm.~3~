@@ -1,0 +1,6 @@
+inherited ConsultaGrupos: TConsultaGrupos
+  Caption = 'Consulta de Grupos'
+  ExplicitTop = -96
+  PixelsPerInch = 96
+  TextHeight = 13
+end

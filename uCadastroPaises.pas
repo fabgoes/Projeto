@@ -48,6 +48,7 @@ begin
   self.edt_Pais.Enabled       := false;
   self.edt_DDI.Enabled        := false;
   self.edt_Sigla.Enabled      := false;
+  self.edt_DataCad.Enabled    := false;
   self.edt_DataUltAlt.Enabled := false;
 
 end;
@@ -56,7 +57,7 @@ procedure TCadastroPaises.carregaEdit;
 begin
   inherited;
   self.edt_Codigo.Text     := inttostr( oPais.getCodigo);
-  edt_Pais.Text            := oPais.getPais;
+  self.edt_Pais.Text            := oPais.getPais;
   edt_DDI.Text             := oPais.getDDI;
   edt_Sigla.Text           := oPais.getSigla;
   self.edt_DataCad.Text    := oPais.getDataCad;
@@ -80,23 +81,25 @@ begin
   self.edt_Pais.Enabled  := true;
   self.edt_DDI.Enabled   := true;
   self.edt_Sigla.Enabled := true;
+  self.edt_DataCad.Enabled   := true;
+  self.edt_DataUltAlt.Enabled := true;
 
 end;
 
 procedure TCadastroPaises.edt_PaisExit(Sender: TObject);
 //var
-  //mX : string;
+//  mX : string;
 begin
-   //inherited;
-  // mX := aCtrlPais.pesquisar(edt_Pais.Text);
-
-   //if aCtrlPais.AcheiReg then
-  // begin
-  //    showmessage(self.edt_pais.text +' ,ja cadastrado !!, ');
-   //   self.edt_Pais.SetFocus;
-  // end;
-
+ // inherited;
+ // aCtrlPais.Pesquisar(edt_Pais.Text);
+//  if aCtrlPais.AcheiReg then
+ // begin
+ //  showmessage(self.edt_Pais.Text + ', Ja cadastrado !!');
+ //  self.edt_Pais.SetFocus;
+//end;
 end;
+
+
 
 procedure TCadastroPaises.limpaEdit;
 begin
@@ -104,6 +107,8 @@ begin
   self.edt_Pais.Clear;
   self.edt_DDI.Clear;
   self.edt_Sigla.Clear;
+  self.edt_DataCad.Clear;
+  self.edt_DataUltAlt.Clear;
 
 end;
 
@@ -116,44 +121,48 @@ end;
 procedure TCadastroPaises.salvar;
 var
  msg: string;
+ mPais:Paises;
 begin
+   if (btn_Salvar.Caption = '&Salvar') or (btn_Salvar.Caption = '&Alterar') then
+   begin
+       if edt_pais.Text = '' then
+       begin
+         showmessage('Campo Pais eh Obrigatorio!');
+         edt_Pais.SetFocus;
+       end
+       else if edt_Sigla.Text = '' then
+       begin
+          showmessage('Campo Sigla eh Obrigatorio!');
+          edt_sigla.SetFocus;
+       end
+       else
+       begin
+          oPais.setCodigo    ( strtoint(self.edt_Codigo.Text));
+          oPais.setPais      ( edt_Pais.Text );
+          oPais.setDDI       ( edt_DDI.Text) ;
+          oPais.setSigla     ( edt_Sigla.Text );
+          oPais.setDataCad   ( self.edt_DataCad.Text);
+          oPais.setDataUltAlt( self.edt_DataCad.Text);
+          self.aCtrlPais.Salvar(oPais.clone);
+       end;
+         showmessage ('Pais Salvo com sucesso') ;
+   end
+      else if (btn_Salvar.Caption = '&Excluir') then
+      begin
+         aCtrlPais.Excluir(oPais);
+         showmessage ('Pais Excluido com sucesso') ;
+      end
+      else
+      begin
+         showmessage ('Pais não pode ser Excluido ');
 
-  if edt_pais.Text = '' then
-  begin
-    showmessage('Campo Pais eh Obrigatorio!');
-    edt_Pais.SetFocus;
-  end
-  else if edt_Sigla.Text = '' then
-  begin
-     showmessage('Campo Sigla eh Obrigatorio!');
-     edt_sigla.SetFocus;
-  end
-  else
-  begin
 
-     oPais.setCodigo    ( strtoint(self.edt_Codigo.Text));
-     oPais.setPais      ( edt_Pais.Text );
-     oPais.setDDI       ( edt_DDI.Text) ;
-     oPais.setSigla     ( edt_Sigla.Text );
-     oPais.setDataCad   ( self.edt_DataCad.Text);
-     oPais.setDataUltAlt( self.edt_DataCad.Text);
-     self.aCtrlPais.Salvar(oPais.clone);
-
-  //else
-  //begin
-     // msg:=  aCtrlPais.Excluir(oPais.clone);
-     // if  msg = '' then
-       // showmessage ('Pais Excluido com sucesso!')
-    //else
-     //    showmessage ('Problema na exclusao:'+msg)
-
-
-
-
+      end;
+      close;
   end;
-  inherited;
 
-end;
+
+
 
 
 end.

@@ -16,6 +16,7 @@ type
     Celular           : string[14];
     FormaPag          : string[10];
     Observacao        : string[200];
+    InsEstadual       : string[11];
 
 
 
@@ -29,12 +30,14 @@ type
    procedure setObservacao(pObservacao:string);
    procedure setRazaoSocial(pRazaoSocial:string);
    procedure setCelular(pCelular:string);
+   procedure setInsEstadual (pInsEstadual :string);
    function getCNPJ:string;
    function getSite:string;
    function getFormaPag:string;
    function getObservacao:string;
    function getRazaoSocial:string;
    function getCelular:string;
+   function getInsEstadual :string;
    function Clone: Fornecedores;
 
 
@@ -56,6 +59,7 @@ begin
    Celular        := '';
    FormaPag       := '';
    Observacao     := '';
+   InsEstadual    :='';
 
 end;
 
@@ -72,6 +76,11 @@ end;
 function Fornecedores.getFormaPag: string;
 begin
    result :=FormaPag;
+end;
+
+function Fornecedores.getInsEstadual: string;
+begin
+   result:= InsEstadual
 end;
 
 function Fornecedores.getObservacao: string;
@@ -106,6 +115,11 @@ begin
     FormaPag:= pFormaPag;
 end;
 
+procedure Fornecedores.setInsEstadual(pInsEstadual: string);
+begin
+   InsEstadual:=pInsEstadual;
+end;
+
 procedure Fornecedores.setObservacao(pObservacao: string);
 begin
    Observacao := pObservacao;
@@ -135,9 +149,6 @@ begin
    result.setDataCad(DataCad);
    result.setDataUltAlt(DataUltAlt);
    result.setNome(Nome);
-   result.setSexo(Sexo);
-   result.setRG(RG);
-   result.setCPF(CPF);
    result.setTelefone(Telefone);
    result.setCelular(Celular);
    result.setEmail(Email);
@@ -152,7 +163,8 @@ begin
    result.setCNPJ(CNPJ);
    result.setObservacao(Observacao);
    result.setRazaoSocial(RazaoSocial);
-   result.setDataNasc(DataNasc);
+   result.setInsEstadual(InsEstadual)
+
 end;
 
 end.

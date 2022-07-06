@@ -12,7 +12,6 @@ type
   TConsultaEstados = class(TConsultaPai)
     procedure btn_PesquisarClick(Sender: TObject);
     procedure btn_SairClick(Sender: TObject);
-    procedure btn_ExcluirClick(Sender: TObject);
     procedure edtChaveExit(Sender: TObject);
 
 
@@ -52,14 +51,11 @@ begin
   oCadastroEstados.limpaEdit;
   oCadastroEstados.carregaEdit;
   oCadastroEstados.ShowModal;
+  self.DBGrid1.DataSource:= TDataSource(aCtrlEstado.getDS);
+  aCtrlEstado.Pesquisar(self.chave.Text);
 
 end;
 
-procedure TConsultaEstados.btn_ExcluirClick(Sender: TObject);
-begin
-  inherited;
-  aCtrlEstado.Excluir(oEstado);
-end;
 
 procedure TConsultaEstados.btn_PesquisarClick(Sender: TObject);
 begin
@@ -104,6 +100,8 @@ begin
   oCadastroEstados.ShowModal;
   oCadastroEstados.desbloqueiaEdit;
   oCadastroEstados.btn_salvar.Caption :=nAux;
+  self.DBGrid1.DataSource:= TDataSource(aCtrlEstado.getDS);
+  aCtrlEstado.Pesquisar(self.chave.Text);
 
 end;
 
@@ -115,7 +113,8 @@ begin
   oCadastroEstados.limpaEdit;
   oCadastroEstados.carregaEdit;
   oCadastroEstados.ShowModal;
-  self.Pesquisar;
+  self.DBGrid1.DataSource:= TDataSource(aCtrlEstado.getDS);
+  aCtrlEstado.Pesquisar(self.chave.Text);
 
 end;
 

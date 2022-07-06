@@ -11,7 +11,6 @@ uses
 type
     TConsultaCidades = class(TConsultaPai)
     procedure btn_PesquisarClick(Sender: TObject);
-    procedure btn_ExcluirClick(Sender: TObject);
     procedure edtChaveExit(Sender: TObject);
     procedure btn_SairClick(Sender: TObject);
   private
@@ -50,14 +49,12 @@ begin
   oCadastroCidades.limpaEdit;
   oCadastroCidades.carregaEdit;
   oCadastroCidades.ShowModal;
+  self.DBGrid1.DataSource:= TDataSource(aCtrlCidade.getDS);
+  aCtrlCidade.Pesquisar(self.chave.Text);
 
 end;
 
-procedure TConsultaCidades.btn_ExcluirClick(Sender: TObject);
-begin
-  inherited;
-  aCtrlCidade.Excluir(aCidade);
-end;
+
 
 procedure TConsultaCidades.btn_PesquisarClick(Sender: TObject);
 begin
@@ -102,6 +99,8 @@ begin
   oCadastroCidades.ShowModal;
   oCadastroCidades.desbloqueiaEdit;
   oCadastroCidades.btn_salvar.Caption :=nAux;
+  self.DBGrid1.DataSource:= TDataSource(aCtrlCidade.getDS);
+  aCtrlCidade.Pesquisar(self.chave.Text);
 
 end;
 
@@ -114,7 +113,8 @@ begin
   self.oCadastroCidades.limpaEdit;
   self.oCadastroCidades.carregaEdit;
   self.oCadastroCidades.ShowModal;
-  self.Pesquisar;
+  self.DBGrid1.DataSource:= TDataSource(aCtrlCidade.getDS);
+  aCtrlCidade.Pesquisar(self.chave.Text);
 
 end;
 

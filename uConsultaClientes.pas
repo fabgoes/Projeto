@@ -9,7 +9,6 @@ uses
 
 type
   TConsultaClientes = class(TConsultaPai)
-    procedure btn_ExcluirClick(Sender: TObject);
     procedure btn_PesquisarClick(Sender: TObject);
     procedure btn_SairClick(Sender: TObject);
   private
@@ -47,14 +46,11 @@ begin
   oCadastroCliente.limpaEdit;
   oCadastroCliente.carregaEdit;
   oCadastroCliente.ShowModal;
+  self.DBGrid1.DataSource:= TDataSource(aCtrlCliente.getDS);
+  aCtrlCliente.Pesquisar(self.chave.Text);
 
 end;
 
-procedure TConsultaClientes.btn_ExcluirClick(Sender: TObject);
-begin
-  inherited;
-  aCtrlCliente.Excluir(oCliente);
-end;
 
 procedure TConsultaClientes.btn_PesquisarClick(Sender: TObject);
 begin
@@ -94,6 +90,8 @@ begin
   oCadastroCliente.ShowModal;
   oCadastroCliente.desbloqueiaEdit;
   oCadastroCliente.btn_salvar.Caption :=nAux;
+  self.DBGrid1.DataSource:= TDataSource(aCtrlCliente.getDS);
+  aCtrlCliente.Pesquisar(self.chave.Text);
 
 
 end;
@@ -106,7 +104,8 @@ begin
   oCadastroCliente.limpaEdit;
   oCadastroCliente.carregaEdit;
   oCadastroCliente.ShowModal;
-  self.Pesquisar;
+  self.DBGrid1.DataSource:= TDataSource(aCtrlCliente.getDS);
+  aCtrlCliente.Pesquisar(self.chave.Text);
 
 end;
 

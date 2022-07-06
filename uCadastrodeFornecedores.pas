@@ -21,6 +21,8 @@ type
     edt_CNPJ: TEdit;
     lbl_FormaPag: TLabel;
     edt_FormaPag: TEdit;
+    lbl_InsEstadual: TLabel;
+    edt_InsEstadual: TEdit;
     procedure btn_PesquisarClick(Sender: TObject);
   private
     { Private declarations }
@@ -59,9 +61,6 @@ begin
    edt_Nome.Enabled        := false;
    edt_FormaPag.Enabled    := false;
    edt_CNPJ.Enabled        := false;
-   edt_RG.Enabled          := false;
-   edt_CPF.Enabled         := false;
-   edt_Sexo.Enabled        := false;
    edt_Telefone.Enabled    := false;
    edt_Celular.Enabled     := false;
    edt_Email.Enabled       := false;
@@ -71,11 +70,11 @@ begin
    edt_Numero.Enabled      := false;
    edt_Complemento.Enabled := false;
    edt_codCidade.Enabled   := false;
-   edt_DataNasc.Enabled    := false;
    edt_Observacao.Enabled  := false;
    edt_Site.Enabled        := false;
    edt_FormaPag.Enabled    := false;
    edt_RazaoSocial.Enabled := false;
+   edt_InsEstadual.Enabled := false;
 
 end;
 
@@ -91,7 +90,6 @@ begin
   oConsultaCidades.btn_Sair.Caption := 'Selecionar';
   oConsultaCidades.conhecaObj(aCidade,aCtrlFornecedor.getaCtrlCidade);
   oConsultaCidades.ShowModal;
-  //aCtrlCliente.getaCtrlCidade.carregar(oFornecedor.getaCidade);
   oConsultaCidades.btn_Sair.Caption:= naux;
   self.edt_CodCidade.Text := inttostr(aCidade.getCodigo);
   self.edt_Cidade.Text := aCidade.getCidade;
@@ -105,9 +103,6 @@ begin
    edt_Nome.text            :=oFornecedor.getNome;
    edt_FormaPag.text        :=oFornecedor.getFormaPag;
    edt_CNPJ.text            :=oFornecedor.getCNPJ;
-   edt_RG.text              :=oFornecedor.getRG;
-   edt_CPF.text             :=oFornecedor.getCPF;
-   edt_Sexo.text            :=oFornecedor.getSexo;
    edt_Telefone.text        :=oFornecedor.getTelefone;
    edt_Celular.text         :=oFornecedor.getCelular;
    edt_Email.text           :=oFornecedor.getEmail;
@@ -116,13 +111,13 @@ begin
    edt_Logradouro.text      :=oFornecedor.getLogradouro;
    edt_Numero.text          := oFornecedor.getNumero;
    edt_Complemento.text     :=oFornecedor.getComplemento;
-   edt_DataNasc.text        :=oFornecedor.getDataNasc;
    edt_codCidade.Text       := inttoStr(oFornecedor.getaCidade.getCodigo);
    edt_Cidade.Text          := oFornecedor.getacidade.getCidade;
    edt_Observacao.Text      :=oFornecedor.getObservacao;
    edt_Site.Text            :=oFornecedor.getSite;
    edt_FormaPag.Text        :=oFornecedor.getFormaPag;
    edt_RazaoSocial.Text     :=oFornecedor.getRazaoSocial;
+   edt_InsEstadual.Text     := oFornecedor.getInsEstadual;
    self.edt_DataCad.Text    := oFornecedor.getDataCad;
    self.edt_DataUltAlt.Text := oFornecedor.getDataUltAlt;
 
@@ -148,9 +143,6 @@ begin
    edt_Nome.Enabled        :=true;
    edt_FormaPag.Enabled    :=true;
    edt_CNPJ.Enabled        :=true;
-   edt_RG.Enabled          :=true;
-   edt_CPF.Enabled         :=true;
-   edt_Sexo.Enabled        :=true;
    edt_Telefone.Enabled    :=true;
    edt_Celular.Enabled     :=true;
    edt_Email.Enabled       :=true;
@@ -160,11 +152,11 @@ begin
    edt_Numero.Enabled      :=true;
    edt_Complemento.Enabled :=true;
    edt_codCidade.Enabled   :=true;
-   edt_DataNasc.Enabled    :=true;
    edt_Observacao.Enabled  :=true;
    edt_Site.Enabled        :=true;
    edt_FormaPag.Enabled    :=true;
    edt_RazaoSocial.Enabled :=true;
+   edt_InsEstadual.Enabled :=true;
 
 end;
 
@@ -172,11 +164,8 @@ procedure TCadastrodeFornecedores.limpaEdit;
 begin
    inherited;
    self.edt_Nome.Clear;
-   self.edt_RG.Clear;
-   self.edt_CPF.Clear;
    self.edt_CNPJ.Clear;
    self.edt_FormaPag.Clear;
-   self.edt_Sexo.Clear;
    self.edt_Telefone.Clear;
    self.edt_Celular.Clear;
    self.edt_Email.Clear;
@@ -186,11 +175,11 @@ begin
    self.edt_Numero.Clear;
    self.edt_Complemento.Clear;
    self.edt_codCidade.Clear;
-   self.edt_DataNasc.Clear;
    self.edt_Observacao.Clear;
    self.edt_Site.Clear;
    self.edt_FormaPag.Clear;
    self.edt_RazaoSocial.Clear;
+   self.edt_InsEstadual.Clear;
 
 end;
 
@@ -201,45 +190,63 @@ begin
 end;
 
 procedure TCadastrodeFornecedores.salvar;
-
 begin
-  inherited;
-  if self.edt_Nome.Text = '' then
+  if (btn_Salvar.Caption = '&Salvar') or (btn_Salvar.Caption = '&Alterar') then
   begin
-    showmessage('Campo Nome eh Obrigatorio!');
-    self.edt_Nome.SetFocus;
+
+     if self.edt_Nome.Text = '' then
+     begin
+        showmessage('Campo Nome eh Obrigatorio!');
+        self.edt_Nome.SetFocus;
+     end
+     else  if edt_CNPJ.Text = '' then
+     begin
+       showmessage('Campo CNPJ eh Obrigatorio!');
+       edt_CNPJ.SetFocus;
+     end
+     else
+     begin
+        oFornecedor.setCodigo      (strtoint(edt_Codigo.Text));
+        oFornecedor.setNome        (edt_Nome.Text);
+        oFornecedor.setCNPJ        (edt_CNPJ.Text);
+        oFornecedor.setTelefone    (edt_Telefone.Text);
+        oFornecedor.setCelular     (edt_Celular.Text);
+        oFornecedor.setEmail       (edt_Email.Text);
+        oFornecedor.setCEP         (edt_CEP.Text);
+        oFornecedor.setBairro      (edt_Bairro.Text);
+        oFornecedor.setLogradouro  (edt_Logradouro.Text);
+        oFornecedor.setNumero      (edt_Numero.Text);
+        oFornecedor.setComplemento (edt_Complemento.Text);
+        oFornecedor.setSite        (edt_Site.Text);
+        oFornecedor.setObservacao  (edt_Observacao.Text);
+        oFornecedor.setFormaPag    (edt_FormaPag.Text);
+        oFornecedor.setRazaoSocial (edt_RazaoSocial.Text);
+        oFornecedor.setInsEstadual(edt_InsEstadual.Text);
+        oFornecedor.getaCidade.setCodigo (strtoint(edt_codCidade.Text));
+        oFornecedor.getaCidade.setCidade (edt_Cidade.Text);
+        aCtrlFornecedor.Salvar(oFornecedor.clone);
+     end;
+     inherited;
+       showmessage ('Fornecedor Salvo com sucesso') ;
   end
-  else  if edt_CNPJ.Text = '' then
-  begin
-    showmessage('Campo CNPJ eh Obrigatorio!');
-    edt_CNPJ.SetFocus;
-  end
-  else
-  begin
-     oFornecedor.setCodigo      (strtoint(edt_Codigo.Text));
-     oFornecedor.setNome        (edt_Nome.Text);
-     oFornecedor.setCNPJ        (edt_CNPJ.Text);
-     oFornecedor.setRG          (edt_RG.Text);
-     oFornecedor.setCPF         (edt_CPF.Text);
-     oFornecedor.setSexo        (edt_Sexo.Text);
-     oFornecedor.setTelefone    (edt_Telefone.Text);
-     oFornecedor.setCelular     (edt_Celular.Text);
-     oFornecedor.setEmail       (edt_Email.Text);
-     oFornecedor.setCEP         (edt_CEP.Text);
-     oFornecedor.setBairro      (edt_Bairro.Text);
-     oFornecedor.setLogradouro  (edt_Logradouro.Text);
-     oFornecedor.setNumero      (edt_Numero.Text);
-     oFornecedor.setComplemento (edt_Complemento.Text);
-     oFornecedor.setDataNasc    (edt_DataNasc.Text);
-     oFornecedor.setSite        (edt_Site.Text);
-     oFornecedor.setObservacao  (edt_Observacao.Text);
-     oFornecedor.setFormaPag    (edt_FormaPag.Text);
-     oFornecedor.setRazaoSocial (edt_RazaoSocial.Text);
-     oFornecedor.getaCidade.setCodigo (strtoint(edt_codCidade.Text));
-     oFornecedor.getaCidade.setCidade (edt_Cidade.Text);
-     aCtrlFornecedor.Salvar(oFornecedor.clone);
-  end;
+      else if (btn_Salvar.Caption = '&Excluir') then
+      begin
+         aCtrlFornecedor.Excluir(oFornecedor);
+         showmessage ('Fornecedor Excluido com sucesso');
+      end
+      else
+      begin
+         showmessage ('Fornecedor não pode ser Excluido ');
+
+
+      end;
+      close;
+
 end;
+
+
+
+
 procedure TCadastrodeFornecedores.setConsulta(pObj: TObject);
 begin
   inherited;

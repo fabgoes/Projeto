@@ -17,7 +17,7 @@ type
     sigla : string[3];
   public
     constructor crieObj;
-    constructor crieInit(pCodigo : integer; pPais, pDDI, pSigla: string);
+    constructor crieInit(pCodigo : integer; pPais, pDDI, pSigla, pDataCad, pDataUltAlt: string);
     destructor destrua_se;
     procedure setPais (pPais : string);
     procedure setDDI (pDDI : string);
@@ -38,12 +38,14 @@ begin
   sigla := '';
 end;
 
-constructor Paises.crieInit(pCodigo: integer; pPais, pDDI, pSigla: string);
+constructor Paises.crieInit(pCodigo: integer; pPais, pDDI, pSigla,pDataCad, pDataUltAlt: string);
 begin
   codigo := pCodigo;
   pais := pPais;
   ddi := pDDI;
   sigla := pSigla;
+  DataCad:=pDataCad;
+  DataUltAlt := pDataUltAlt;
 
 end;
 
@@ -86,10 +88,13 @@ function Paises.clone: Paises;
 begin
   result := Paises.crieObj;
   result.setCodigo(codigo);
+  result.setDataCad(DataCad);
+  result.setDataUltAlt(DataUltAlt);
   result.setPais(pais);
   result.setDDI(ddi);
   result.setSigla(sigla);
-  result.setDataCad(dataCad);
+
+
 end;
 
 end.

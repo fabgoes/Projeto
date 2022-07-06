@@ -5,12 +5,13 @@ interface
 uses
   Classes, SysUtils, uPai, uCidades, Vcl.ComCtrls;
 
-type Pessoas = class (Pai)
+type
+   Pessoas = class (Pai)
   protected
     Nome       : string[50];
-    Sexo       : string[10];
-    RG         : string[9];
-    CPF        : string[11];
+    //Sexo       : string[10];
+    //RG         : string[9];
+   // CPF        : string[11];
     Telefone   : string[14];
     Email      : string[50];
     CEP        : string[5];
@@ -26,22 +27,15 @@ type Pessoas = class (Pai)
    constructor CrieObj;
    destructor Destrua_se;
    procedure setNome(pNome:string);
-   procedure setSexo(pSexo:string);
-   procedure setRG(pRG:string);
-   procedure setCPF(pCPF:string);
    procedure setTelefone(pTelefone:string);
    procedure setEmail(pEmail:string);
    procedure setCEP(pCEP:string);
    procedure setBairro(pBairro:string);
    procedure setLogradouro(pLogradouro:string);
    procedure setNumero(pNumero:string);
-   procedure setDataNasc(pDataNasc:string);
    procedure setComplemento(pComplemento:string);
    procedure setaCidade(pCidade:cidades);
    function getNome:string;
-   function getSexo:string;
-   function getRG:string;
-   function getCPF:string;
    function getTelefone:string;
    function getEmail:string;
    function getCEP:string;
@@ -49,7 +43,6 @@ type Pessoas = class (Pai)
    function getLogradouro:string;
    function getNumero:string;
    function getComplemento:string;
-   function getDataNasc:string;
    function getaCidade:Cidades;
    function Clone: Pessoas;
 
@@ -63,9 +56,8 @@ implementation
 
 constructor Pessoas.CrieObj;
 begin
+   inherited;
    Nome:= '';
-   Sexo:='';
-   DataNasc:= '';
    Telefone:= '';
    Email:= '';
    CEP:= '';
@@ -79,11 +71,8 @@ end;
 
 destructor Pessoas.Destrua_se;
 begin
-
+   inherited;
 end;
-
-
-
 
 function Pessoas.getBairro: string;
 begin
@@ -105,17 +94,6 @@ begin
    result := Complemento;
 end;
 
-function Pessoas.getCPF: string;
-begin
-    result := CPF
-end;
-
-
-function Pessoas.getDataNasc: string;
-begin
-
-end;
-
 function Pessoas.getEmail: string;
 begin
    result := Email;
@@ -135,16 +113,6 @@ end;
 function Pessoas.getNumero: string;
 begin
    result :=  Numero;
-end;
-
-function Pessoas.getRG: string;
-begin
-   result := RG;
-end;
-
-function Pessoas.getSexo: string;
-begin
-   result := Sexo;
 end;
 
 
@@ -174,16 +142,6 @@ begin
     Complemento:= pComplemento;
 end;
 
-procedure Pessoas.setCPF(pCPF: string);
-begin
-    CPF := pCPF;
-end;
-
-
-procedure Pessoas.setDataNasc(pDataNasc: string);
-begin
-
-end;
 
 procedure Pessoas.setEmail(pEmail: string);
 begin
@@ -208,17 +166,6 @@ begin
     Numero:=pNumero;
 end;
 
-procedure Pessoas.setRG(pRG: string);
-begin
-   RG :=  pRG;
-end;
-
-procedure Pessoas.setSexo(pSexo: string);
-begin
-   Sexo:=pSexo;
-end;
-
-
 
 procedure Pessoas.setTelefone(pTelefone: string);
 begin
@@ -232,9 +179,6 @@ begin
    result.setDataCad(DataCad);
    result.setDataUltAlt(DataUltAlt);
    result.setNome(Nome);
-   result.setSexo(Sexo);
-   result.setRG(RG);
-   result.setCPF(CPF);
    result.setTelefone(Telefone);
    result.setEmail(Email);
    result.setCEP(CEP);
@@ -243,7 +187,7 @@ begin
    result.setNumero(Numero);
    result.setaCidade(aCidade.clone);
    result.setComplemento(Complemento);
-   result.setDataNasc(DataNasc);
+
 
 
 end;

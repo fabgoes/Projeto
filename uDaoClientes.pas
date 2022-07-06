@@ -8,7 +8,7 @@ uses
    private
    protected
    public
-       //constructor  CrieObj;                                               override;
+
        function Excluir(pObj : TObject): string;                           override;
        function Salvar(pObj : TObject): string;                            override;
        function Carregar (pObjt : TObject):string;                         override;
@@ -54,6 +54,8 @@ begin
         mCliente.setNumero( aDM.QClientes.FieldByName('NUMERO').Value);
         mCliente.setComplemento( aDM.QClientes.FieldByName('Complemento').AsString);
         mCliente.setDataNasc( aDM.QClientes.FieldByName('DataNasc').AsString);
+        mCliente.setDataCad( aDM.QClientes.FieldByName('DataCad').AsString);
+        mCliente.setDataUltAlt( aDM.QClientes.FieldByName('DataUltAlt').AsString);
         mCliente.setCelular( aDM.QClientes.FieldByName('Celular').AsString);
         mCliente.getaCidade.setCodigo( aDM.QClientes.FieldByName('codcidade').Value);
         result := '';
@@ -77,12 +79,11 @@ var
 begin
    try
       mCliente := Clientes(pObj);
-      mSql := 'delete * from clientes where codCliente = '+quotedstr(inttostr(mCliente.getCodigo));
+      mSql := 'delete  from clientes where codCliente = '+ inttostr(mCliente.getCodigo);
       aDm.Trans.StartTransaction;
       aDM.QClientes.Active:= false;
       aDm.QClientes.SQL.Clear;
-      aDm.QClientes.SQL.Add(mSql);
-      aDM.QClientes.Open;
+      aDM.QClientes.ExecSQL(mSql);
       aDM.Trans.Commit;
       result := '';
    except on e: Exception do
@@ -131,7 +132,7 @@ begin
       begin
         if mCliente.getCodigo = 0 then
 
-        mSql:= ' insert into clientes(cliente,FormaPag,CNPJ,RG,CPF,Sexo,Telefone,Celular,Email,CEP,Bairro,Logradouro,Numero,Complemento,Datanasc, codcidade) ' + ' values(:Cliente,:FormaPag,:CNPJ,:RG,:CPF,:Sexo,:Telefone,:celular,:Email,:CEP,:Bairro,:Logradouro,:Numero,:Complemento,:Datanasc,:codcidade) '
+        mSql:= ' insert into clientes(cliente,FormaPag,CNPJ,RG,CPF,Sexo,Telefone,Celular,Email,CEP,Bairro,Logradouro,Numero,Complemento,Datanasc, DataCad, DataUltAlt,codcidade) ' + ' values(:Cliente,:FormaPag,:CNPJ,:RG,:CPF,:Sexo,:Telefone,:celular,:Email,:CEP,:Bairro,:Logradouro,:Numero,:Complemento,:Datanasc,:DataCad, :DataUltAlt,:codcidade) '
         else
         begin
           mSql := ' update Clientes set cliente= :Cliente,FormaPag= :FormaPag,CNPJ= :CNPJ,RG= :RG,CPF= :CPF,Sexo= :Sexo,Telefone= :Telefone, ' + ' celular= :celular,Email= :Email,CEP= :CEP,Bairro= :Bairro,Logradouro= :Logradouro,Numero= :Numero,Complemento= :Complemento,DataNasc= :Datanasc, codcidade = :codcidade ' ;
@@ -156,6 +157,8 @@ begin
         ParamByName('COMPLEMENTO').Value :=mCliente.getComplemento;
         ParamByName('FORMAPAG').Value :=mCliente.getFormaPag;
         ParamByName('DATANASC').Value :=mCliente.getDataNasc;
+        //ParamByName('DATACAD').Value :=mCliente.getDataCad;
+        //ParamByName('DATAULTALT').Value :=mCliente.getDataUltAlt;
         if mCliente.getCodigo <> 0 then
         ParamByName('CODCLIENTE').Value :=mCliente.getCodigo;
         ParamByName('CODCIDADE').Value :=mCliente.getaCidade.getCodigo;

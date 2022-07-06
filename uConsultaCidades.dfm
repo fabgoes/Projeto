@@ -1,6 +1,5 @@
 inherited ConsultaCidades: TConsultaCidades
   Caption = 'Consulta Cidades'
-  ExplicitTop = -96
   PixelsPerInch = 96
   TextHeight = 13
   inherited btn_Excluir: TButton

@@ -1,0 +1,238 @@
+unit uProdutos;
+
+interface
+
+uses
+  Classes, SysUtils, uPai, uCidades, Vcl.ComCtrls, uFornecedores,uGrupos;
+
+type
+   Produtos = class (Pai)
+
+  protected
+   Produto	      :string[100];
+   Situacao	      :string[1];
+   Unidade  	    :string[1];
+   Largura	      :smallint;
+   NCM	          :string[20];
+   QtdEstoque	    :currency;
+   VlCusto 	      :currency;
+   VlUltcompra	  :currency;
+   VlVenda	      :currency;
+   Observacao	    :string[100];
+   CFOP	          :string[4];
+   oGrupo	        :Grupos;
+   oFornecedor    :Fornecedores;
+
+  public
+   constructor CrieObj;
+   destructor Destrua_se;
+   procedure setProduto(pProduto:string);
+   procedure setSituacao(pSituacao:string);
+   procedure setUnidade(pUnidade:string);
+   procedure setLargura(pLargura:string);
+   procedure setNCM(pNCM:string);
+   procedure setQtdEstoque(pQtdEstoque:string);
+   procedure setVlCusto(pVlCusto:string);
+   procedure setVlUltcompra(pVlUltcompra:string);
+   procedure setVlVenda(pVlVenda:string);
+   procedure setObservacao(pObservacao:string);
+   procedure setCFOP(pCFOP:string);
+   procedure setoGrupo(poGrupo:Grupos);
+   procedure setoFornecedor(poFornecedor : Fornecedores);
+   function getProduto:string;
+   function getSituacao:string;
+   function getUnidade:string;
+   function getLargura:string;
+   function getNCM:string;
+   function getQtdEstoque:string;
+   function getVlCusto:string;
+   function getVlUltcompra:string;
+   function getVlVenda:string;
+   function getObservacao:string;
+   function getCFOP:string;
+   function getoGrupo:Grupos;
+   function getoFornecedor:Fornecedores;
+   function Clone:Produtos;
+
+
+end;
+
+implementation
+
+{ Produtos }
+
+
+
+constructor Produtos.CrieObj;
+begin
+   Produto	     :='';
+   Situacao	     :='';
+   Unidade  	   :='';
+   Largura	     := 0;
+   NCM	         :='';
+   QtdEstoque	   := 0;
+   VlCusto 	     := 0.0;
+   VlUltcompra	 := 0.0;
+   VlVenda	     := 0.0;
+   Observacao	   :='';
+   CFOP	         :='';
+   oGrupo	       :=Grupos.CrieObj;
+   oFornecedor   :=Fornecedores.CrieObj;
+
+end;
+
+destructor Produtos.Destrua_se;
+begin
+
+end;
+
+function Produtos.getCFOP: string;
+begin
+
+end;
+
+function Produtos.getLargura: string;
+begin
+
+end;
+
+function Produtos.getNCM: string;
+begin
+
+end;
+
+function Produtos.getObservacao: string;
+begin
+
+end;
+
+function Produtos.getoFornecedor: Fornecedores;
+begin
+
+end;
+
+function Produtos.getoGrupo: Grupos;
+begin
+
+end;
+
+function Produtos.getProduto: string;
+begin
+
+end;
+
+function Produtos.getQtdEstoque: string;
+begin
+
+end;
+
+function Produtos.getSituacao: string;
+begin
+
+end;
+
+function Produtos.getUnidade: string;
+begin
+
+end;
+
+function Produtos.getVlCusto: string;
+begin
+
+end;
+
+function Produtos.getVlUltcompra: string;
+begin
+
+end;
+
+function Produtos.getVlVenda: string;
+begin
+
+end;
+
+procedure Produtos.setCFOP(pCFOP: string);
+begin
+
+end;
+
+procedure Produtos.setLargura(pLargura: string);
+begin
+
+end;
+
+procedure Produtos.setNCM(pNCM: string);
+begin
+
+end;
+
+procedure Produtos.setObservacao(pObservacao: string);
+begin
+
+end;
+
+procedure Produtos.setoFornecedor(poFornecedor: Fornecedores);
+begin
+
+end;
+
+procedure Produtos.setoGrupo(poGrupo: Grupos);
+begin
+
+end;
+
+procedure Produtos.setProduto(pProduto: string);
+begin
+
+end;
+
+procedure Produtos.setQtdEstoque(pQtdEstoque: string);
+begin
+
+end;
+
+procedure Produtos.setSituacao(pSituacao: string);
+begin
+
+end;
+
+procedure Produtos.setUnidade(pUnidade: string);
+begin
+
+end;
+
+procedure Produtos.setVlCusto(pVlCusto: string);
+begin
+
+end;
+
+procedure Produtos.setVlUltcompra(pVlUltcompra: string);
+begin
+
+end;
+
+procedure Produtos.setVlVenda(pVlVenda: string);
+begin
+
+end;
+
+function Produtos.Clone: Produtos;
+begin
+   result:= Produtos.CrieObj;
+   result.setCodigo(Codigo);
+   result.setDataCad(DataCad);
+   result.setDataUltAlt(DataUltAlt);
+   result.setProduto(Produto);
+   result.setSituacao(Situacao);
+   result.setUnidade(Unidade);
+   result.setLargura(Largura);
+   result.setNCM(NCM);
+   result.setQtdEstoque(QtdEstoque);
+   result.setVlCusto(VlCusto);
+   result.setVlUltcompra(VlUltcompra);
+
+
+
+end;
+
+end.

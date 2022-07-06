@@ -10,7 +10,6 @@ uses
 
 type
   TConsultaFornecedores = class(TConsultaPai)
-    procedure btn_ExcluirClick(Sender: TObject);
     procedure btn_SairClick(Sender: TObject);
     procedure btn_PesquisarClick(Sender: TObject);
 
@@ -48,14 +47,9 @@ begin
   oCadastrodeFornecedor.limpaEdit;
   oCadastrodeFornecedor.carregaEdit;
   oCadastrodeFornecedor.ShowModal;
+  self.DBGrid1.DataSource:= TDataSource(aCtrlFornecedor.getDS);
+  aCtrlFornecedor.Pesquisar(self.chave.Text);
 end;
-
-procedure TConsultaFornecedores.btn_ExcluirClick(Sender: TObject);
-begin
-  inherited;
-  aCtrlFornecedor.Excluir(oFornecedor);
-end;
-
 
 procedure TConsultaFornecedores.btn_PesquisarClick(Sender: TObject);
 begin
@@ -94,6 +88,8 @@ begin
   oCadastrodeFornecedor.ShowModal;
   oCadastrodeFornecedor.desbloqueiaEdit;
   oCadastrodeFornecedor.btn_salvar.Caption :=nAux;
+  self.DBGrid1.DataSource:= TDataSource(aCtrlFornecedor.getDS);
+  aCtrlFornecedor.Pesquisar(self.chave.Text);
 end;
 
 procedure TConsultaFornecedores.Incluir;
@@ -104,8 +100,10 @@ begin
   oCadastrodeFornecedor.limpaEdit;
   oCadastrodeFornecedor.carregaEdit;
   oCadastrodeFornecedor.ShowModal;
-  self.Pesquisar;
+  self.DBGrid1.DataSource:= TDataSource(aCtrlFornecedor.getDS);
+  aCtrlFornecedor.Pesquisar(self.chave.Text);
 end;
+
 procedure TConsultaFornecedores.Pesquisar;
 begin
   inherited;

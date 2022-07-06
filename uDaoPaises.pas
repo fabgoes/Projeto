@@ -44,6 +44,8 @@ begin
         mPais.setPais( aDM.QPaises.FieldByName('PAIS').AsString);
         mPais.setDDI( aDM.QPaises.FieldByName('DDI').AsString);
         mPais.setSigla( aDM.QPaises.FieldByName('SIGLA').AsString);
+        mPais.setDataCad( aDM.QPaises.FieldByName('DataCad').AsString);
+        mPais.setDataUltAlt( aDM.QPaises.FieldByName('DataUltAlt').AsString);
         result := '';
       end;
    except on e:exception do
@@ -67,13 +69,12 @@ var
    mPais : Paises;
 begin
    try
-      mPais := Paises(pObj);
-      mSql := 'delete * from paises where codPais = '+quotedstr(inttostr(mPais.getCodigo));
+      mPais:= Paises(pObj);
+      mSql := 'delete  from paises where codPais = '+inttostr(mPais.getCodigo);
       aDm.Trans.StartTransaction;
       aDM.QPaises.Active:= false;
       aDm.QPaises.SQL.Clear;
-      aDm.QPaises.SQL.Add(mSql);
-      aDM.QPaises.Open;
+      aDM.QPaises.ExecSQL(mSql);
       aDM.Trans.Commit;
       result := '';
    except on e: Exception do
@@ -83,7 +84,7 @@ begin
    end;
 
 
-      end;
+   end;
 
 end;
 

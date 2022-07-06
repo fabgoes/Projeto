@@ -1,0 +1,89 @@
+unit uCargos;
+
+interface
+uses
+  Classes, SysUtils, uPai, Vcl.ComCtrls;
+
+type
+   Cargos = class (Pai)
+
+  protected
+   Cargo  	      :string[50];
+   Situacao	      :string[1];
+   Observacao	    :string[100];
+
+
+
+  public
+   constructor CrieObj;
+   destructor Destrua_se;
+   procedure setCargo(pGrupo:string);
+   procedure setSituacao(pSituacao:string);
+   procedure setObservacao(pObservacao:string);
+   function getCargo:string;
+   function getSituacao:string;
+   function getObservacao:string;
+   function Clone:Cargos;
+
+
+end;
+implementation
+
+{ Cargos }
+
+function Cargos.Clone: Cargos;
+begin
+   result:= Cargos.CrieObj;
+   result.setCodigo(Codigo);
+   result.setDataCad(DataCad);
+   result.setDataUltAlt(DataUltAlt);
+   result.setCargo(Cargo);
+   result.setSituacao(Situacao);
+   result.setObservacao(Observacao);
+end;
+
+constructor Cargos.CrieObj;
+begin
+   inherited;
+   Cargo     :='';
+   Situacao  :='';
+   Observacao:='';
+
+end;
+
+destructor Cargos.Destrua_se;
+begin
+   inherited;
+end;
+
+function Cargos.getCargo: string;
+begin
+   result:=Cargo;
+end;
+
+function Cargos.getObservacao: string;
+begin
+   result:=Observacao;
+end;
+
+function Cargos.getSituacao: string;
+begin
+   result:=Situacao;
+end;
+
+procedure Cargos.setCargo(pGrupo: string);
+begin
+   Cargo:= pGrupo;
+end;
+
+procedure Cargos.setObservacao(pObservacao: string);
+begin
+   Observacao:= pObservacao;
+end;
+
+procedure Cargos.setSituacao(pSituacao: string);
+begin
+   Situacao:=pSituacao;
+end;
+
+end.

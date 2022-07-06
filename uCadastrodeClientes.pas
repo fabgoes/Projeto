@@ -14,6 +14,14 @@ type
     edt_FormaPag: TEdit;
     lbl_Celular: TLabel;
     edt_Celular: TEdit;
+    lbl_RG: TLabel;
+    lbl_CPF: TLabel;
+    lbl_Sexo: TLabel;
+    lbl_DataNasc: TLabel;
+    edt_RG: TEdit;
+    edt_CPF: TEdit;
+    edt_Sexo: TEdit;
+    edt_DataNasc: TEdit;
     procedure btn_PesquisarClick(Sender: TObject);
   private
     { Private declarations }
@@ -77,7 +85,6 @@ begin
   oConsultaCidades.btn_Sair.Caption := 'Selecionar';
   oConsultaCidades.conhecaObj(aCidade,aCtrlCliente.getaCtrlCidade);
   oConsultaCidades.ShowModal;
-  //aCtrlCliente.getaCtrlCidade.carregar(oCliente.getaCidade);
   oConsultaCidades.btn_Sair.Caption:= naux;
   self.edt_CodCidade.Text := inttostr(aCidade.getCodigo);
   self.edt_Cidade.Text := aCidade.getCidade;
@@ -91,7 +98,6 @@ begin
    edt_Nome.text            :=oCliente.getNome;
    edt_FormaPag.text        :=oCliente.getFormaPag;
    edt_RG.text              :=oCliente.getRG;
-   edt_CPF.text             :=oCliente.getCPF;
    edt_Sexo.text            :=oCliente.getSexo;
    edt_Telefone.text        :=oCliente.getTelefone;
    edt_Celular.text         :=oCliente.getCelular;
@@ -173,48 +179,56 @@ begin
 end;
 
 procedure TCadastrodeClientes.salvar;
-
 begin
-
-  if self.edt_Nome.Text = '' then
+  if (btn_Salvar.Caption = '&Salvar') or (btn_Salvar.Caption = '&Alterar') then
   begin
-    showmessage('Campo Nome eh Obrigatorio!');
-    self.edt_Nome.SetFocus;
+     inherited;
+     if self.edt_Nome.Text = '' then
+     begin
+        showmessage('Campo Nome eh Obrigatorio!');
+        self.edt_Nome.SetFocus;
+     end
+     else
+     begin
+        oCliente.setCodigo      (strtoint(edt_Codigo.Text));
+        oCliente.setNome        (edt_Nome.Text);
+        oCliente.setFormaPag    (edt_FormaPag.Text);
+        oCliente.setRG          (edt_RG.Text);
+        oCliente.setCPF         (edt_CPF.Text);
+        oCliente.setSexo        (edt_Sexo.Text);
+        oCliente.setTelefone    (edt_Telefone.Text);
+        oCliente.setCelular     (edt_Celular.Text);
+        oCliente.setEmail       (edt_Email.Text);
+        oCliente.setCEP         (edt_CEP.Text);
+        oCliente.setBairro      (edt_Bairro.Text);
+        oCliente.setLogradouro  (edt_Logradouro.Text);
+        oCliente.setNumero      (edt_Numero.Text);
+        oCliente.setComplemento (edt_Complemento.Text);
+        oCliente.setDataNasc    (edt_DataNasc.Text);
+        oCliente.getaCidade.setCodigo (strtoint(edt_codCidade.Text));
+        oCliente.getaCidade.setCidade (edt_Cidade.Text);
+        aCtrlCliente.Salvar(oCliente.clone);
+
+     end;
+        showmessage ('Cliente Salvo com sucesso') ;
   end
-  else if edt_RG.Text = '' then
-  begin
-    showmessage('Campo RG eh Obrigatorio!');
-    edt_RG.SetFocus;
-  end
-  else
-  begin
-     oCliente.setCodigo      (strtoint(edt_Codigo.Text));
-     oCliente.setNome        (edt_Nome.Text);
-     oCliente.setFormaPag    (edt_FormaPag.Text);
-     oCliente.setRG          (edt_RG.Text);
-     oCliente.setCPF         (edt_CPF.Text);
-     oCliente.setSexo        (edt_Sexo.Text);
-     oCliente.setTelefone    (edt_Telefone.Text);
-     oCliente.setCelular     (edt_Celular.Text);
-     oCliente.setEmail       (edt_Email.Text);
-     oCliente.setCEP         (edt_CEP.Text);
-     oCliente.setBairro      (edt_Bairro.Text);
-     oCliente.setLogradouro  (edt_Logradouro.Text);
-     oCliente.setNumero      (edt_Numero.Text);
-     oCliente.setComplemento (edt_Complemento.Text);
-     oCliente.setDataNasc    (edt_DataNasc.Text);
-     oCliente.getaCidade.setCodigo (strtoint(edt_codCidade.Text));
-     oCliente.getaCidade.setCidade (edt_Cidade.Text);
-     aCtrlCliente.Salvar(oCliente.clone);
+      else if (btn_Salvar.Caption = '&Excluir') then
+      begin
+         aCtrlCliente.Excluir(oCliente);
+         showmessage ('Cliente Excluido com sucesso');
+      end
+      else
+      begin
+         showmessage ('Cliente não pode ser Excluido ');
 
 
-
-
-  end;
-  inherited;
-
+      end;
+      close;
 
 end;
+
+
+
 
 procedure TCadastrodeClientes.setConsulta(pObj: TObject);
 begin

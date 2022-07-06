@@ -1,0 +1,83 @@
+unit uGrupos;
+
+interface
+uses
+  Classes, SysUtils, uPai, uCidades, Vcl.ComCtrls;
+
+type
+   Grupos = class (Pai)
+
+  protected
+   Grupo  	      :string[100];
+   Situacao	      :string[1];
+   Observacao	    :string[100];
+
+
+
+  public
+   constructor CrieObj;
+   destructor Destrua_se;
+   procedure setGrupo(pGrupo:string);
+   procedure setSituacao(pSituacao:string);
+   procedure setObservação(pObservação:string);
+   function getGrupo:string;
+   function getSituacao:string;
+   function getObservacao:string;
+   function Clone:Grupos;
+
+
+end;
+
+implementation
+
+{ Grupos }
+
+function Grupos.Clone: Grupos;
+begin
+    Grupo     := '';
+    Situacao  := '';
+    Observacao:='';
+
+end;
+
+constructor Grupos.CrieObj;
+begin
+
+end;
+
+destructor Grupos.Destrua_se;
+begin
+
+end;
+
+function Grupos.getGrupo: string;
+begin
+
+end;
+
+function Grupos.getObservacao: string;
+begin
+
+end;
+
+function Grupos.getSituacao: string;
+begin
+
+end;
+
+procedure Grupos.setGrupo(pGrupo: string);
+begin
+
+end;
+
+procedure Grupos.setObservação(pObservação: string);
+begin
+
+end;
+
+procedure Grupos.setSituacao(pSituacao: string);
+begin
+
+end;
+
+end.

@@ -5,7 +5,9 @@ uses
    uPaises, uEstados, uCidades, uConsultaPaises, uConsultaEstados, uConsultaCidades, uCadastroPaises,
    uCadastroEstados, uCadastroCidades, uConsultaPai, uCadastroPai, uController,
    uConsultaClientes, uCadastrodeClientes, uConsultaFuncionarios,
-   uCadastrodeFuncionarios, uConsultaFornecedores, uCadastrodeFornecedores;
+   uCadastrodeFuncionarios, uConsultaFornecedores, uCadastrodeFornecedores,
+   uConsultaGrupos, uCadastrodeGrupos, uConsultaProdutos, uCadastrodeProdutos,
+   uConsultaCargos, uCadastrodeCargos;
 type
    Inter = class
 
@@ -17,6 +19,9 @@ type
     oConsultaClientes       : TConsultaClientes;
     oConsultaFuncionarios   : TConsultaFuncionarios;
     oConsultaFornecedores   : TConsultaFornecedores;
+    oConsultaGrupos         : TConsultaGrupos;
+    oConsultaProdutos       : TConsultaProdutos;
+    oConsultaCargos         : TConsultaCargos;
 
     oCadastroPaises         : TCadastroPaises;
     oCadastroEstados        : TCadastroEstados;
@@ -25,6 +30,9 @@ type
     oCadastroClientes       : TCadastrodeClientes;
     oCadastrodeFuncionarios : TCadastrodeFuncionarios;
     oCadastrodeFornecedores : TCadastrodeFornecedores;
+    oCadastrodeGrupos       : TCadastrodeGrupos;
+    oCadastrodeProdutos     : TCadastrodeProdutos;
+    oCadastrodeCargos       : TCadastrodeCargos;
 
 
 
@@ -38,6 +46,9 @@ type
      procedure PDClientes(pObj: TObject; pCtrl : Controller);
      procedure PDFuncionarios(pObj: TObject; pCtrl : Controller);
      procedure PDFornecedores(pObj: TObject; pCtrl : Controller);
+     procedure PDGrupos(pObj: TObject; pCtrl : Controller);
+     procedure PDProdutos(pObj: TObject; pCtrl : Controller);
+     procedure PDCargos(pObj: TObject; pCtrl : Controller);
 
 
 
@@ -56,6 +67,9 @@ begin
     oConsultaClientes             := TConsultaClientes.Create(nil);
     oConsultaFuncionarios         := TConsultaFuncionarios.Create(nil);
     oConsultaFornecedores         := TConsultaFornecedores.Create(nil);
+    oConsultaGrupos               := TConsultaGrupos.Create(nil);
+    oConsultaProdutos             := TConsultaProdutos.Create(nil);
+    oConsultaCargos               := TConsultaCargos.Create(nil);
 
 
     oCadastroPaises               := TCadastroPaises.Create(nil);
@@ -64,6 +78,9 @@ begin
     oCadastroClientes             := TCadastrodeClientes.Create(nil);
     oCadastrodeFuncionarios       := TCadastrodeFuncionarios.Create(nil);
     oCadastrodeFornecedores       := TCadastrodeFornecedores.Create(nil);
+    oCadastrodeGrupos             := TCadastrodeGrupos.Create(nil);
+    oCadastrodeProdutos           := TCadastrodeProdutos.Create(nil);
+    oCadastrodeCargos             := TCadastrodeCargos.Create(nil);
 
     oConsultaPaises.setCad(oCadastroPaises);
     oConsultaEstados.setCad(oCadastroEstados);
@@ -71,12 +88,18 @@ begin
     oConsultaClientes.setCad(oCadastroClientes);
     oConsultaFuncionarios.setCad(oCadastrodeFuncionarios);
     oConsultaFornecedores.setCad(oCadastrodeFornecedores);
+    oConsultaGrupos.setCad(oCadastrodeGrupos);
+    oConsultaProdutos.setCad(oCadastrodeProdutos);
+    oConsultaCargos.setCad(oCadastrodeCargos);
 
     oCadastroEstados.setConsulta(oConsultaPaises);
     oCadastroCidades.setConsulta(oConsultaEstados);
     oCadastroClientes.setConsulta(oConsultaCidades);
     oCadastrodeFuncionarios.setConsulta(oConsultaCidades);
+    oCadastrodeFuncionarios.setConsulta(oConsultaCargos);
     oCadastrodeFornecedores.setConsulta(oConsultaCidades);
+    oCadastrodeProdutos.setConsulta(oConsultaGrupos);
+    oCadastrodeProdutos.setConsulta(oConsultaFornecedores);
 
 end;
 
@@ -88,6 +111,9 @@ begin
     oConsultaClientes.FreeInstance;
     oConsultaFuncionarios.FreeInstance;
     oConsultaFornecedores.FreeInstance;
+    oConsultaGrupos.FreeInstance;
+    oConsultaProdutos.FreeInstance;
+    oConsultaCargos.FreeInstance;
 
 
     oCadastroPaises.FreeInstance;
@@ -96,7 +122,16 @@ begin
     oCadastroClientes.FreeInstance;
     oCadastrodeFuncionarios.FreeInstance;
     oCadastrodeFornecedores.FreeInstance;
+    oCadastrodeGrupos.FreeInstance;
+    oCadastrodeProdutos.FreeInstance;
+    oCadastrodeCargos.FreeInstance;
 
+end;
+
+procedure Inter.PDCargos(pObj: TObject; pCtrl: Controller);
+begin
+   oConsultaCargos.conhecaObj(pObj, pCtrl );
+   oConsultaCargos.ShowModal;
 end;
 
 procedure Inter.PDCidades(pObj: TObject; pCtrl : Controller);
@@ -129,11 +164,23 @@ begin
    oConsultaFuncionarios.ShowModal;
 end;
 
+procedure Inter.PDGrupos(pObj: TObject; pCtrl: Controller);
+begin
+   oConsultaGrupos.conhecaObj(pObj, pCtrl );
+   oConsultaGrupos.ShowModal;
+end;
+
 procedure Inter.PDPaises(pObj: TObject; pCtrl : Controller);
 begin
    oConsultaPaises.conhecaObj(pObj, pCtrl );
    oConsultaPaises.ShowModal;
 
+end;
+
+procedure Inter.PDProdutos(pObj: TObject; pCtrl: Controller);
+begin
+   oConsultaProdutos.conhecaObj(pObj, pCtrl );
+   oConsultaProdutos.ShowModal;
 end;
 
 end.

@@ -203,6 +203,39 @@
         <DCCReference Include="uCadastrodeFornecedores.pas">
             <Form>CadastrodeFornecedores</Form>
         </DCCReference>
+        <DCCReference Include="uProdutos.pas"/>
+        <DCCReference Include="uGrupos.pas"/>
+        <DCCReference Include="uDaoGrupos.pas"/>
+        <DCCReference Include="uCtrlGrupos.pas"/>
+        <DCCReference Include="uConsultaGrupos.pas">
+            <Form>ConsultaGrupos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uCadastrodeGrupos.pas">
+            <Form>CadastrodeGrupos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uDaoProdutos.pas"/>
+        <DCCReference Include="uCtrlProdutos.pas"/>
+        <DCCReference Include="uConsultaProdutos.pas">
+            <Form>ConsultaProdutos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uCadastrodeProdutos.pas">
+            <Form>CadastrodeProdutos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uCargos.pas"/>
+        <DCCReference Include="uDaoCargos.pas"/>
+        <DCCReference Include="uCtrlCargos.pas"/>
+        <DCCReference Include="uConsultaCargos.pas">
+            <Form>ConsultaCargos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uCadastrodeCargos.pas">
+            <Form>CadastrodeCargos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

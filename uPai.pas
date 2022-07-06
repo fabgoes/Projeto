@@ -41,7 +41,7 @@ constructor Pai.CrieObj;
 begin
    Codigo :=0;
    DataCad:='';
-   DataUltAlt:=' ';
+   DataUltAlt:='';
 end;
 
 destructor Pai.Destrua_se;

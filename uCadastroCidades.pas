@@ -121,29 +121,42 @@ end;
 
 procedure TCadastroCidades.salvar;
 begin
-  inherited;
-  if self.edt_Cidade.Text = '' then
+  if (btn_Salvar.Caption = '&Salvar') or (btn_Salvar.Caption = '&Alterar') then
   begin
-    showmessage('Campo Cidade eh Obrigatorio!');
-    self.edt_Cidade.SetFocus;
+     inherited;
+     if self.edt_Cidade.Text = '' then
+     begin
+        showmessage('Campo Cidade eh Obrigatorio!');
+        self.edt_Cidade.SetFocus;
+     end
+     else  if edt_codEstado.Text = '' then
+     begin
+        showmessage('Campo codigo Estado eh Obrigatorio!');
+        self.edt_codEstado.SetFocus;
+     end
+     else
+     begin
+        aCidade.setCodigo            (strtoint(edt_Codigo.Text));
+        aCidade.setCidade            ( edt_Cidade.Text);
+        aCidade.setDDD               ( edt_DDD.Text);
+        aCidade.getoEstado.setCodigo (strtoint(edt_codEstado.Text));
+        aCidade.getoEstado.setEstado (edt_Estado.Text);
+        aCtrlCidade.Salvar(aCidade.clone);
+     end;
+        showmessage ('Cidade Salvo com sucesso') ;
   end
-  else  if edt_codEstado.Text = '' then
-  begin
-     showmessage('Campo codigo Estado eh Obrigatorio!');
-     self.edt_codEstado.SetFocus;
-  end
-  else
-  begin
-     aCidade.setCodigo            (strtoint(edt_Codigo.Text));
-     aCidade.setCidade            ( edt_Cidade.Text);
-     aCidade.setDDD               ( edt_DDD.Text);
-     aCidade.getoEstado.setCodigo (strtoint(edt_codEstado.Text));
-     aCidade.getoEstado.setEstado (edt_Estado.Text);
-     aCtrlCidade.Salvar(aCidade.clone);
+      else if (btn_Salvar.Caption = '&Excluir') then
+      begin
+         aCtrlCidade.Excluir(aCidade);
+         showmessage ('Cidade Excluido com sucesso');
+      end
+      else
+      begin
+         showmessage ('Cidade não pode ser Excluido ');
 
 
-  end;
-
+      end;
+      close;
 
 end;
 

@@ -14,24 +14,6 @@ inherited CadastrodeFuncionarios: TCadastrodeFuncionarios
     Left = 177
     ExplicitLeft = 177
   end
-  inherited lbl_RG: TLabel
-    Left = 178
-    Top = 311
-    ExplicitLeft = 178
-    ExplicitTop = 311
-  end
-  inherited lbl_CPF: TLabel
-    Left = 34
-    Top = 311
-    ExplicitLeft = 34
-    ExplicitTop = 311
-  end
-  inherited lbl_Sexo: TLabel
-    Left = 512
-    Top = 311
-    ExplicitLeft = 512
-    ExplicitTop = 311
-  end
   inherited lbl_Telefone: TLabel
     Left = 34
     Top = 180
@@ -88,46 +70,75 @@ inherited CadastrodeFuncionarios: TCadastrodeFuncionarios
     Left = 321
     ExplicitLeft = 321
   end
-  object lbl_DataAdmissao: TLabel [17]
-    Left = 351
+  object lbl_DataAdmissao: TLabel [14]
+    Left = 526
     Top = 253
     Width = 86
     Height = 13
     Caption = 'Data de Admissao'
   end
-  object lbl_DataDemissao: TLabel [18]
-    Left = 512
+  object lbl_DataDemissao: TLabel [15]
+    Left = 677
     Top = 253
     Width = 86
     Height = 13
     Caption = 'Data de Demissao'
   end
-  object lbl_VSalario: TLabel [19]
-    Left = 178
+  object lbl_VSalario: TLabel [16]
+    Left = 397
     Top = 253
     Width = 32
     Height = 13
     Caption = 'Salario'
   end
-  inherited lbl_DataNasc: TLabel
-    Left = 351
-    Top = 311
-    ExplicitLeft = 351
-    ExplicitTop = 311
-  end
-  object lbl_Celular: TLabel [21]
+  object lbl_Celular: TLabel [17]
     Left = 177
     Top = 180
     Width = 33
     Height = 13
     Caption = 'Celular'
   end
-  object lbl_Cargo: TLabel [22]
-    Left = 36
+  object lbl_Cargo: TLabel [18]
+    Left = 148
     Top = 253
     Width = 29
     Height = 13
     Caption = 'Cargo'
+  end
+  object lbl_RG: TLabel [19]
+    Left = 34
+    Top = 328
+    Width = 14
+    Height = 13
+    Caption = 'RG'
+  end
+  object lbl_CPF: TLabel [20]
+    Left = 179
+    Top = 328
+    Width = 19
+    Height = 13
+    Caption = 'CPF'
+  end
+  object lbl_DataNasc: TLabel [21]
+    Left = 423
+    Top = 328
+    Width = 46
+    Height = 13
+    Caption = 'DataNasc'
+  end
+  object lbl_Sexo: TLabel [22]
+    Left = 576
+    Top = 328
+    Width = 24
+    Height = 13
+    Caption = 'Sexo'
+  end
+  object lbl_CodCargo: TLabel [23]
+    Left = 34
+    Top = 253
+    Width = 65
+    Height = 13
+    Caption = 'Codigo Cargo'
   end
   inherited edt_Codigo: TEdit
     Left = 27
@@ -135,42 +146,30 @@ inherited CadastrodeFuncionarios: TCadastrodeFuncionarios
   end
   inherited edt_DataCad: TEdit
     Left = 31
+    TabOrder = 23
     ExplicitLeft = 31
   end
   inherited edt_DataUltAlt: TEdit
     Left = 171
+    TabOrder = 24
     ExplicitLeft = 171
   end
+  inherited btn_Salvar: TButton
+    TabOrder = 26
+  end
+  inherited btn_Sair: TButton
+    TabOrder = 27
+  end
   inherited edt_CodUsuario: TEdit
-    TabOrder = 23
+    TabOrder = 25
   end
-  inherited edt_RG: TEdit
-    Left = 178
-    Top = 330
-    Width = 116
-    ExplicitLeft = 178
-    ExplicitTop = 330
-    ExplicitWidth = 116
-  end
-  inherited edt_CPF: TEdit
-    Left = 29
-    Top = 330
-    Width = 126
-    ExplicitLeft = 29
-    ExplicitTop = 330
-    ExplicitWidth = 126
-  end
-  inherited edt_Sexo: TEdit
-    Left = 512
-    Top = 330
-    Width = 145
-    ExplicitLeft = 512
-    ExplicitTop = 330
-    ExplicitWidth = 145
+  inherited edt_Nome: TEdit
+    TabOrder = 1
   end
   inherited edt_Telefone: TEdit
     Left = 31
     Top = 199
+    TabOrder = 10
     ExplicitLeft = 31
     ExplicitTop = 199
   end
@@ -178,6 +177,7 @@ inherited CadastrodeFuncionarios: TCadastrodeFuncionarios
     Left = 351
     Top = 199
     Width = 282
+    TabOrder = 12
     ExplicitLeft = 351
     ExplicitTop = 199
     ExplicitWidth = 282
@@ -186,6 +186,7 @@ inherited CadastrodeFuncionarios: TCadastrodeFuncionarios
     Left = 333
     Top = 143
     Width = 115
+    TabOrder = 6
     ExplicitLeft = 333
     ExplicitTop = 143
     ExplicitWidth = 115
@@ -194,6 +195,7 @@ inherited CadastrodeFuncionarios: TCadastrodeFuncionarios
     Left = 31
     Top = 143
     Width = 261
+    TabOrder = 5
     ExplicitLeft = 31
     ExplicitTop = 143
     ExplicitWidth = 261
@@ -202,6 +204,7 @@ inherited CadastrodeFuncionarios: TCadastrodeFuncionarios
     Left = 31
     Top = 97
     Width = 261
+    TabOrder = 2
     ExplicitLeft = 31
     ExplicitTop = 97
     ExplicitWidth = 261
@@ -210,6 +213,7 @@ inherited CadastrodeFuncionarios: TCadastrodeFuncionarios
     Left = 333
     Top = 97
     Width = 115
+    TabOrder = 3
     ExplicitLeft = 333
     ExplicitTop = 97
     ExplicitWidth = 115
@@ -218,6 +222,7 @@ inherited CadastrodeFuncionarios: TCadastrodeFuncionarios
     Left = 526
     Top = 97
     Width = 307
+    TabOrder = 4
     ExplicitLeft = 526
     ExplicitTop = 97
     ExplicitWidth = 307
@@ -226,6 +231,7 @@ inherited CadastrodeFuncionarios: TCadastrodeFuncionarios
     Left = 479
     Top = 143
     Width = 69
+    TabOrder = 7
     ExplicitLeft = 479
     ExplicitTop = 143
     ExplicitWidth = 69
@@ -233,46 +239,41 @@ inherited CadastrodeFuncionarios: TCadastrodeFuncionarios
   inherited edt_Cidade: TEdit
     Left = 576
     Top = 143
+    TabOrder = 8
     ExplicitLeft = 576
     ExplicitTop = 143
   end
   inherited btn_Pesquisar: TButton
     Top = 141
     Height = 26
+    TabOrder = 9
     OnClick = btn_PesquisarClick
     ExplicitTop = 141
     ExplicitHeight = 26
   end
-  inherited edt_DataNasc: TEdit
-    Left = 351
-    Top = 330
-    TabOrder = 22
-    ExplicitLeft = 351
-    ExplicitTop = 330
-  end
   object edt_DataAdmissao: TEdit
-    Left = 351
+    Left = 526
     Top = 272
     Width = 121
     Height = 21
     MaxLength = 10
-    TabOrder = 19
+    TabOrder = 17
   end
   object edt_DataDemissao: TEdit
-    Left = 512
+    Left = 677
     Top = 272
     Width = 145
     Height = 21
     MaxLength = 10
-    TabOrder = 20
+    TabOrder = 18
   end
   object edt_VSalario: TEdit
-    Left = 177
+    Left = 397
     Top = 272
-    Width = 117
+    Width = 99
     Height = 21
     MaxLength = 10
-    TabOrder = 21
+    TabOrder = 16
   end
   object edt_Celular: TEdit
     Left = 177
@@ -280,14 +281,63 @@ inherited CadastrodeFuncionarios: TCadastrodeFuncionarios
     Width = 115
     Height = 21
     MaxLength = 14
-    TabOrder = 24
+    TabOrder = 11
   end
   object edt_Cargo: TEdit
-    Left = 34
+    Left = 144
     Top = 272
-    Width = 121
+    Width = 145
     Height = 21
     MaxLength = 50
-    TabOrder = 25
+    TabOrder = 14
+  end
+  object edt_RG: TEdit
+    Left = 31
+    Top = 347
+    Width = 121
+    Height = 21
+    MaxLength = 9
+    TabOrder = 19
+  end
+  object edt_CPF: TEdit
+    Left = 177
+    Top = 347
+    Width = 121
+    Height = 21
+    MaxLength = 11
+    TabOrder = 20
+  end
+  object edt_DataNasc: TEdit
+    Left = 423
+    Top = 347
+    Width = 121
+    Height = 21
+    MaxLength = 10
+    TabOrder = 21
+  end
+  object edt_Sexo: TEdit
+    Left = 576
+    Top = 347
+    Width = 121
+    Height = 21
+    MaxLength = 10
+    TabOrder = 22
+  end
+  object edt_CodCargo: TEdit
+    Left = 34
+    Top = 272
+    Width = 79
+    Height = 21
+    MaxLength = 4
+    TabOrder = 13
+  end
+  object btn_Pesquisar2: TButton
+    Left = 295
+    Top = 270
+    Width = 75
+    Height = 25
+    Caption = 'Pesquisar'
+    TabOrder = 15
+    OnClick = btn_Pesquisar2Click
   end
 end

@@ -1,0 +1,88 @@
+unit uConsultaGrupos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uConsultaPai, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, Vcl.StdCtrls, uGrupos, uCtrlGrupos, uCadastrodeGrupos;
+
+type
+  TConsultaGrupos = class(TConsultaPai)
+  private
+    { Private declarations }
+    oCadastroGrupos : TCadastrodeGrupos;
+    oGrupo          : Grupos;
+    aCtrlGrupo      : CtrlGrupos;
+
+  public
+    { Public declarations }
+    procedure conhecaObj (pObj, pCtrl: TObject  );  override;
+    procedure Pesquisar;                          override;
+    procedure Incluir;                            override;
+    procedure Alterar;                            override;
+    procedure Excluir;                            override;
+    procedure Sair;                               override;
+    procedure setcad (pObj : TObject);            override;
+  end;
+
+
+
+var
+  ConsultaGrupos: TConsultaGrupos;
+
+implementation
+
+{$R *.dfm}
+
+{ TConsultaGrupos }
+
+procedure TConsultaGrupos.Alterar;
+var
+ mMsg : string;
+begin
+  inherited;
+  mMsg := aCtrlGrupo.Carregar(oGrupo);
+  self.oCadastroGrupos.conhecaObj(oGrupo, aCtrlGrupo);
+  oCadastroGrupos.limpaEdit;
+  oCadastroGrupos.carregaEdit;
+  oCadastroGrupos.ShowModal;
+
+end;
+procedure TConsultaGrupos.conhecaObj(pObj, pCtrl: TObject);
+begin
+  inherited;
+
+end;
+
+procedure TConsultaGrupos.Excluir;
+begin
+  inherited;
+
+end;
+
+procedure TConsultaGrupos.Incluir;
+begin
+  inherited;
+
+end;
+
+procedure TConsultaGrupos.Pesquisar;
+begin
+  inherited;
+
+end;
+
+procedure TConsultaGrupos.Sair;
+begin
+  inherited;
+
+end;
+
+procedure TConsultaGrupos.setcad(pObj: TObject);
+begin
+  inherited;
+
+end;
+
+end.

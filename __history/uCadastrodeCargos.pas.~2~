@@ -1,0 +1,26 @@
+unit uCadastrodeCargos;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uCadastroPai, Vcl.StdCtrls;
+
+type
+  TCadastrodeCargos = class(TCadastroPai)
+    lbl_Cargo: TLabel;
+    edt_Cargo: TEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  CadastrodeCargos: TCadastrodeCargos;
+
+implementation
+
+{$R *.dfm}
+
+end.

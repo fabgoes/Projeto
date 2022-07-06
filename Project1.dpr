@@ -50,7 +50,22 @@ uses
   uCadastrodePessoas in 'uCadastrodePessoas.pas' {CadastrodePessoas},
   uCadastrodeClientes in 'uCadastrodeClientes.pas' {CadastrodeClientes},
   uCadastrodeFuncionarios in 'uCadastrodeFuncionarios.pas' {CadastrodeFuncionarios},
-  uCadastrodeFornecedores in 'uCadastrodeFornecedores.pas' {CadastrodeFornecedores};
+  uCadastrodeFornecedores in 'uCadastrodeFornecedores.pas' {CadastrodeFornecedores},
+  uProdutos in 'uProdutos.pas',
+  uGrupos in 'uGrupos.pas',
+  uDaoGrupos in 'uDaoGrupos.pas',
+  uCtrlGrupos in 'uCtrlGrupos.pas',
+  uConsultaGrupos in 'uConsultaGrupos.pas' {ConsultaGrupos},
+  uCadastrodeGrupos in 'uCadastrodeGrupos.pas' {CadastrodeGrupos},
+  uDaoProdutos in 'uDaoProdutos.pas',
+  uCtrlProdutos in 'uCtrlProdutos.pas',
+  uConsultaProdutos in 'uConsultaProdutos.pas' {ConsultaProdutos},
+  uCadastrodeProdutos in 'uCadastrodeProdutos.pas' {CadastrodeProdutos},
+  uCargos in 'uCargos.pas',
+  uDaoCargos in 'uDaoCargos.pas',
+  uCtrlCargos in 'uCtrlCargos.pas',
+  uConsultaCargos in 'uConsultaCargos.pas' {ConsultaCargos},
+  uCadastrodeCargos in 'uCadastrodeCargos.pas' {CadastrodeCargos};
 
 {$R *.res}
 var

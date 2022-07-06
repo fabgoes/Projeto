@@ -1,0 +1,20 @@
+inherited CadastrodeCargos: TCadastrodeCargos
+  Caption = 'Cadastro de Cargos'
+  PixelsPerInch = 96
+  TextHeight = 13
+  object lbl_Cargo: TLabel [4]
+    Left = 184
+    Top = 24
+    Width = 35
+    Height = 13
+    Caption = 'Cargo*'
+  end
+  object edt_Cargo: TEdit
+    Left = 184
+    Top = 43
+    Width = 345
+    Height = 21
+    MaxLength = 50
+    TabOrder = 6
+  end
+end

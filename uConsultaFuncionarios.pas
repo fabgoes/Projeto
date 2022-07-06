@@ -10,7 +10,6 @@ uses
 
 type
   TConsultaFuncionarios = class(TConsultaPai)
-    procedure btn_ExcluirClick(Sender: TObject);
     procedure btn_SairClick(Sender: TObject);
     procedure btn_PesquisarClick(Sender: TObject);
 
@@ -50,16 +49,11 @@ begin
   oCadastrodeFuncionario.limpaEdit;
   oCadastrodeFuncionario.carregaEdit;
   oCadastrodeFuncionario.ShowModal;
+  self.DBGrid1.DataSource:= TDataSource(aCtrlFuncionario.getDS);
+  aCtrlFuncionario.Pesquisar(self.chave.Text);
 
 end;
 
-
-
-procedure TConsultaFuncionarios.btn_ExcluirClick(Sender: TObject);
-begin
-  inherited;
-  aCtrlFuncionario.Excluir(oFuncionario);
-end;
 
 procedure TConsultaFuncionarios.btn_PesquisarClick(Sender: TObject);
 begin
@@ -98,6 +92,8 @@ begin
   oCadastrodeFuncionario.ShowModal;
   oCadastrodeFuncionario.desbloqueiaEdit;
   oCadastrodeFuncionario.btn_salvar.Caption :=nAux;
+  self.DBGrid1.DataSource:= TDataSource(aCtrlFuncionario.getDS);
+  aCtrlFuncionario.Pesquisar(self.chave.Text);
 
 end;
 
@@ -109,7 +105,8 @@ begin
   oCadastrodeFuncionario.limpaEdit;
   oCadastrodeFuncionario.carregaEdit;
   oCadastrodeFuncionario.ShowModal;
-  self.Pesquisar;
+  self.DBGrid1.DataSource:= TDataSource(aCtrlFuncionario.getDS);
+  aCtrlFuncionario.Pesquisar(self.chave.Text);
 
 end;
 

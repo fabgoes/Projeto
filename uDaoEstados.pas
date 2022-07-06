@@ -64,12 +64,11 @@ var
 begin
    try
       mEstado := Estados(pObj);
-      mSql := 'delete * from estados where codEstado = '+quotedstr(inttostr(mEstado.getCodigo));
+      mSql := 'delete  from estados where codEstado = '+inttostr(mEstado.getCodigo);
       aDm.Trans.StartTransaction;
       aDM.QEstados.Active:= false;
       aDm.QEstados.SQL.Clear;
-      aDm.QEstados.SQL.Add(mSql);
-      aDM.QEstados.Open;
+      aDM.QEstados.ExecSQL(mSql);
       aDM.Trans.Commit;
       result := '';
    except on e: Exception do

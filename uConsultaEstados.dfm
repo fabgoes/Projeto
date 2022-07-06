@@ -2,6 +2,7 @@ inherited ConsultaEstados: TConsultaEstados
   Caption = 'Consulta Estados'
   ClientHeight = 596
   ClientWidth = 813
+  OnClick = edtChaveExit
   ExplicitWidth = 829
   ExplicitHeight = 635
   PixelsPerInch = 96

@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uCadastrodePessoas, Vcl.StdCtrls,
-  uFuncionarios, uCtrlFuncionarios, uConsultaCidades, uCidades;
+  uFuncionarios, uCtrlFuncionarios, uConsultaCidades, uCidades, uCargos,
+  uCtrlCargos, uConsultaCargos;
 
 type
   TCadastrodeFuncionarios = class(TCadastrodePessoas)
@@ -19,12 +20,25 @@ type
     edt_Celular: TEdit;
     lbl_Cargo: TLabel;
     edt_Cargo: TEdit;
+    lbl_RG: TLabel;
+    lbl_CPF: TLabel;
+    lbl_DataNasc: TLabel;
+    lbl_Sexo: TLabel;
+    edt_RG: TEdit;
+    edt_CPF: TEdit;
+    edt_DataNasc: TEdit;
+    edt_Sexo: TEdit;
+    lbl_CodCargo: TLabel;
+    edt_CodCargo: TEdit;
+    btn_Pesquisar2: TButton;
     procedure btn_PesquisarClick(Sender: TObject);
+    procedure btn_Pesquisar2Click(Sender: TObject);
  private
     { Private declarations }
     oFuncionario     : Funcionarios;
     aCtrlFuncionario : CtrlFuncionarios;
     oConsultaCidades : TConsultaCidades;
+    oConsultaCargos  : TConsultaCargos;
 
   public
     { Public declarations }
@@ -35,7 +49,7 @@ type
     procedure bloqueiaEdit;                       override;
     procedure desbloqueiaEdit;                    override;
     procedure conhecaObj(pObj, pCtrl : TObject);  override;
-    procedure setConsulta(pObj : TObject);        override;
+   procedure setConsulta(pObj : TObject);        override;
   end;
 
 var
@@ -71,6 +85,23 @@ begin
 
 end;
 
+procedure TCadastrodeFuncionarios.btn_Pesquisar2Click(Sender: TObject);
+var
+ naux: string;
+ oCargo : Cargos;
+begin
+  inherited;
+  oCargo := Cargos.crieObj;
+  naux := oConsultaCargos.btn_Sair.Caption;
+  oConsultaCargos.btn_Sair.Caption := 'Selecionar';
+  oConsultaCargos.conhecaObj(oCargo,aCtrlFuncionario.getaCtrlCargo);
+  oConsultaCargos.ShowModal;
+  oConsultaCargos.btn_Sair.Caption:= naux;
+  self.edt_CodCargo.Text := inttostr(oCargo.getCodigo);
+  self.edt_Cargo.Text := oCargo.getCargo;
+  oFuncionario.setoCargo(oCargo);
+end;
+
 procedure TCadastrodeFuncionarios.btn_PesquisarClick(Sender: TObject);
 var
  naux: string;
@@ -82,7 +113,6 @@ begin
   oConsultaCidades.btn_Sair.Caption := 'Selecionar';
   oConsultaCidades.conhecaObj(aCidade,aCtrlFuncionario.getaCtrlCidade);
   oConsultaCidades.ShowModal;
-  //aCtrlCliente.getaCtrlCidade.carregar(oCliente.getaCidade);
   oConsultaCidades.btn_Sair.Caption:= naux;
   self.edt_CodCidade.Text := inttostr(aCidade.getCodigo);
   self.edt_Cidade.Text := aCidade.getCidade;
@@ -108,7 +138,7 @@ begin
    edt_VSalario.text             := CurrtoStr(oFuncionario.getVSalario);
    edt_DataAdmissao.text         :=oFuncionario.getDataAdmissao;
    edt_DataDemissao.text         :=oFuncionario.getDataDemissao;
-   edt_Cargo.text                :=oFuncionario.getCargo;
+   edt_Cargo.text                := inttoStr(oFuncionario.getoCargo.getCodigo);
    self.edt_DataNasc.text        :=oFuncionario.getDataNasc;
    self.edt_codCidade.Text       := inttoStr(oFuncionario.getaCidade.getCodigo);
    self.edt_Cidade.Text          := oFuncionario.getacidade.getCidade;
@@ -188,47 +218,64 @@ procedure TCadastrodeFuncionarios.Salvar;
 var
    msg: string;
 begin
-  inherited;
-  if self.edt_Nome.Text = '' then
+  if (btn_Salvar.Caption = '&Salvar') or (btn_Salvar.Caption = '&Alterar') then
   begin
-    showmessage('Campo Nome eh Obrigatorio!');
-    self.edt_Nome.SetFocus;
+     inherited;
+     if self.edt_Nome.Text = '' then
+     begin
+        showmessage('Campo Nome eh Obrigatorio!');
+        self.edt_Nome.SetFocus;
+     end
+     else
+     begin
+        oFuncionario.setCodigo       (strtoint(edt_Codigo.Text));
+        oFuncionario.setNome         (edt_Nome.Text);
+        oFuncionario.setRG           (edt_RG.Text);
+        oFuncionario.setCPF          (edt_CPF.Text);
+        oFuncionario.setSexo         (edt_Sexo.Text);
+        oFuncionario.setTelefone     (edt_Telefone.Text);
+        oFuncionario.setCelular      (edt_Celular.Text);
+        oFuncionario.setEmail        (edt_Email.Text);
+        oFuncionario.setCEP          (edt_CEP.Text);
+        oFuncionario.setBairro       (edt_Bairro.Text);
+        oFuncionario.setLogradouro   (edt_Logradouro.Text);
+        oFuncionario.setNumero       (edt_Numero.Text);
+        oFuncionario.setComplemento  (edt_Complemento.Text);
+        oFuncionario.setVSalario      (StrToCurr(edt_VSalario.Text));
+        oFuncionario.setDataAdmissao (edt_DataAdmissao.Text);
+        oFuncionario.setDataDemissao (edt_DataDemissao.Text);
+        oFuncionario.getoCargo.setCodigo (strtoint(edt_codCargo.Text));
+        oFuncionario.setDataNasc     (edt_DataNasc.Text);
+        oFuncionario.getaCidade.setCodigo (strtoint(edt_codCidade.Text));
+        oFuncionario.getaCidade.setCidade (edt_Cidade.Text);
+        self.aCtrlFuncionario.Salvar(oFuncionario.Clone);
+
+      end;
+        showmessage ('Funcionário Salvo com sucesso') ;
   end
-  else
-  begin
-     oFuncionario.setCodigo       (strtoint(edt_Codigo.Text));
-     oFuncionario.setNome         (edt_Nome.Text);
-     oFuncionario.setRG           (edt_RG.Text);
-     oFuncionario.setCPF          (edt_CPF.Text);
-     oFuncionario.setSexo         (edt_Sexo.Text);
-     oFuncionario.setTelefone     (edt_Telefone.Text);
-     oFuncionario.setCelular      (edt_Celular.Text);
-     oFuncionario.setEmail        (edt_Email.Text);
-     oFuncionario.setCEP          (edt_CEP.Text);
-     oFuncionario.setBairro       (edt_Bairro.Text);
-     oFuncionario.setLogradouro   (edt_Logradouro.Text);
-     oFuncionario.setNumero       (edt_Numero.Text);
-     oFuncionario.setComplemento  (edt_Complemento.Text);
-     oFuncionario.setVSalario      (StrToCurr(edt_VSalario.Text));
-     oFuncionario.setDataAdmissao (edt_DataAdmissao.Text);
-     oFuncionario.setDataDemissao (edt_DataDemissao.Text);
-     oFuncionario.setCargo        (edt_Cargo.Text);
-     oFuncionario.setDataNasc     (edt_DataNasc.Text);
-     oFuncionario.getaCidade.setCodigo (strtoint(edt_codCidade.Text));
-     oFuncionario.getaCidade.setCidade (edt_Cidade.Text);
-     aCtrlFuncionario.Salvar(oFuncionario.clone);
+      else if (btn_Salvar.Caption = '&Excluir') then
+      begin
+         aCtrlFuncionario.Excluir(oFuncionario);
+         showmessage ('Funcionário Excluido com sucesso');
+      end
+      else
+      begin
+         showmessage ('Funcionário não pode ser Excluido ');
 
 
-
-
-  end;
-
+      end;
+      close;
 
 end;
+
+
+
+
 procedure TCadastrodeFuncionarios.setConsulta(pObj: TObject);
 begin
   inherited;
   oConsultaCidades := TConsultaCidades(pObj);
+  oConsultaCargos  := TConsultaCargos(pObj);
 end;
 
 end.

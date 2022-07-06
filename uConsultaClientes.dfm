@@ -1,7 +1,6 @@
 inherited ConsultaClientes: TConsultaClientes
   Caption = 'Consulta Clientes'
   ClientWidth = 801
-  ExplicitTop = -96
   ExplicitWidth = 817
   PixelsPerInch = 96
   TextHeight = 13

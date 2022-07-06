@@ -1,0 +1,82 @@
+unit uDaoCargos;
+
+interface
+uses
+   Data.DB, uDAO, uDM, uCargos, System.SysUtils, Datasnap.DBClient;
+   type
+   DaoCargos = class (DAO)
+   private
+   protected
+   public
+       constructor  CrieObj;                                               override;
+       function Excluir(pObj : TObject): string;                           override;
+       function Salvar(pObj : TObject): string;                            override;
+       function Carregar (pObjt : TObject):string;                         override;
+       procedure Pesquisar ( pChave : string );                            override;
+       function getDS : TObject;                                           override;
+       function AcheiReg(): boolean;
+
+
+
+   end;
+implementation
+
+{ DaoCargos }
+
+function DaoCargos.AcheiReg: boolean;
+begin
+   result := not( aDm.QCargos.Eof);
+end;
+
+function DaoCargos.Carregar(pObjt: TObject): string;
+var
+   mCargo : Cargos;
+begin
+   try
+     try
+      mCargo := Cargos(pObjt);
+      with aDM.QCargos DO
+      begin
+        mCargo := Cargos(pObjt);
+        mCargo.setCodigo(aDM.QCargos.FieldByName('CODCARGO').Value);
+        mCargo.setCargo( aDM.QCargos.FieldByName('Cargo').AsString);
+        mCargo.setDataCad( aDM.QCargos.FieldByName('DataCad').AsString);
+        mCargo.setDataUltAlt( aDM.QCargos.FieldByName('DataUtlAlt').Value);
+        result := '';
+      end;
+   except on e:exception do
+      result:= 'Erro ao carregar: '+ e.Message;
+   end;
+
+ finally
+
+ end;
+end;
+constructor DaoCargos.CrieObj;
+begin
+  inherited;
+
+end;
+
+function DaoCargos.Excluir(pObj: TObject): string;
+begin
+
+end;
+
+function DaoCargos.getDS: TObject;
+begin
+
+end;
+
+procedure DaoCargos.Pesquisar(pChave: string);
+begin
+  inherited;
+
+end;
+
+function DaoCargos.Salvar(pObj: TObject): string;
+begin
+
+end;
+
+end.

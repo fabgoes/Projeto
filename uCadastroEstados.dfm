@@ -35,6 +35,9 @@ inherited CadastroEstados: TCadastroEstados
   inherited edt_Codigo: TEdit
     Enabled = False
   end
+  inherited edt_CodUsuario: TEdit
+    TabOrder = 10
+  end
   object btn_Pesquisar: TButton
     Left = 182
     Top = 129
