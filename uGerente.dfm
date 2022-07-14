@@ -4,7 +4,7 @@ object Gerente: TGerente
   Caption = 'Menu'
   ClientHeight = 354
   ClientWidth = 628
-  Color = clBtnFace
+  Color = clMoneyGreen
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -62,36 +62,45 @@ object Gerente: TGerente
       object N3: TMenuItem
         Caption = '-'
       end
-      object Sair1: TMenuItem
-        Caption = 'C&ondi'#231#227'o de Pagamento'
-      end
-      object Parcelas1: TMenuItem
-        Caption = '&Parcelas'
-      end
-      object Parcelas2: TMenuItem
-        Caption = '&Forma de Pagamentos'
-      end
       object N4: TMenuItem
         Caption = '-'
       end
-      object Sair2: TMenuItem
-        Caption = 'Con&tas a Pagar'
-      end
-      object ContasaReceber1: TMenuItem
-        Caption = 'Contas a &Receber'
-      end
       object N5: TMenuItem
-        Caption = '-'
-      end
-      object Sair3: TMenuItem
-        Caption = '&Nota Fiscal'
-      end
-      object N6: TMenuItem
         Caption = '-'
       end
       object Sair4: TMenuItem
         Caption = 'Sai&r'
         OnClick = Sair4Click
+      end
+    end
+    object Movimentos: TMenuItem
+      Caption = 'Movimentos'
+      object ContaAPagar: TMenuItem
+        Caption = '&Conta a Pagar'
+      end
+      object ContaAReceber: TMenuItem
+        Caption = 'C&onta a Receber'
+      end
+      object FormaPag: TMenuItem
+        Caption = '&Forma de Pagamentos'
+      end
+      object Parcelas: TMenuItem
+        Caption = '&Parcelas'
+      end
+      object CondicaoPagamentos: TMenuItem
+        Caption = '&Condicao de Pagamentos'
+      end
+      object Compra: TMenuItem
+        Caption = 'C&ompras'
+      end
+      object Vendas: TMenuItem
+        Caption = '&Vendas'
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object Sair: TMenuItem
+        Caption = '&Sair'
       end
     end
   end

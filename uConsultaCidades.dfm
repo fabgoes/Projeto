@@ -1,5 +1,6 @@
 inherited ConsultaCidades: TConsultaCidades
   Caption = 'Consulta Cidades'
+  Color = clMoneyGreen
   PixelsPerInch = 96
   TextHeight = 13
   inherited btn_Excluir: TButton

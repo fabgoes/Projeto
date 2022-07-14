@@ -4,7 +4,7 @@ object ConsultaPai: TConsultaPai
   Caption = 'Consulta'
   ClientHeight = 558
   ClientWidth = 722
-  Color = clBtnFace
+  Color = clMoneyGreen
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

@@ -4,7 +4,7 @@ object CadastroPai: TCadastroPai
   Caption = 'Cadastro'
   ClientHeight = 548
   ClientWidth = 772
-  Color = clBtnFace
+  Color = clMoneyGreen
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
